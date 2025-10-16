@@ -20,6 +20,24 @@
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
+  /* Error Colors */
+  --error-300: #FCA5A5;
+  --error-400: #F87171;
+  --error-500: #EF4444;
+  --error-600: #DC2626;
+  --error-700: #B91C1C;
+  --error-800: #991B1B;
+  /* Success Colors */
+  --success-300: #86EFAC;
+  --success-400: #4ADE80;
+  --success-500: #22C55E;
+  --success-600: #16A34A;
+  --success-700: #15803D;
+  --success-800: #166534;
+  /* Brand Colors */
+  --brand-300: #93C5FD;
+  --brand-500: #3B82F6;
+  --brand-800: #1E40AF;
   /* Remove borders - use subtle shadows instead */
   --border: transparent;
   --input: #F5F7FA;
@@ -53,6 +71,24 @@
   --accent-text: #A5B4FC; /* Light indigo for text in dark mode */
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
+  /* Error Colors - Dark Mode */
+  --error-300: #FCA5A5;
+  --error-400: #F87171;
+  --error-500: #EF4444;
+  --error-600: #DC2626;
+  --error-700: #B91C1C;
+  --error-800: #991B1B;
+  /* Success Colors - Dark Mode */
+  --success-300: #86EFAC;
+  --success-400: #4ADE80;
+  --success-500: #22C55E;
+  --success-600: #16A34A;
+  --success-700: #15803D;
+  --success-800: #166534;
+  /* Brand Colors - Dark Mode */
+  --brand-300: #93C5FD;
+  --brand-500: #3B82F6;
+  --brand-800: #1E40AF;
   --border: transparent;
   --input: #1F2937;
   --ring: #1E2370;
@@ -75,6 +111,21 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-error-300: var(--error-300);
+  --color-error-400: var(--error-400);
+  --color-error-500: var(--error-500);
+  --color-error-600: var(--error-600);
+  --color-error-700: var(--error-700);
+  --color-error-800: var(--error-800);
+  --color-success-300: var(--success-300);
+  --color-success-400: var(--success-400);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+  --color-success-800: var(--success-800);
+  --color-brand-300: var(--brand-300);
+  --color-brand-500: var(--brand-500);
+  --color-brand-800: var(--brand-800);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-input-background: var(--input-background);
@@ -279,4 +330,19 @@ svg {
 .dark .hover\:text-accent:hover,
 .dark .hover\:text-accent:hover svg {
   color: #E0E7FF !important;
+}
+
+/* Fullscreen map styles */
+.fullscreen-map:fullscreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.fullscreen-map:fullscreen iframe {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
 }

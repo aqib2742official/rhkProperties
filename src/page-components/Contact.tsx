@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from "react";
-import { Mail, MapPin, Phone, Send, User } from "lucide-react";
+import { useState, useRef } from "react";
+import { Mail, MapPin, Phone, Send, User, Maximize2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/atoms";
 import InputField from "../components/molecules/form/input/InputField";
 import TextArea from "../components/molecules/form/input/TextArea";
 import { toast } from "sonner";
+import { useTheme } from "../components/ThemeProvider";
 interface ContactFormData {
   name: string;
   email: string;
@@ -15,6 +16,8 @@ interface ContactFormData {
 }
 
 export function Contact() {
+  const { theme } = useTheme();
+  const mapContainerRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -25,11 +28,66 @@ export function Contact() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
+  const handleFullscreen = () => {
+    if (mapContainerRef.current) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        mapContainerRef.current.requestFullscreen().catch((err) => {
+          toast.error(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      }
+    }
+  };
+
+  const validateField = (field: keyof ContactFormData, value: string) => {
+    let error = "";
+
+    switch (field) {
+      case "name":
+        if (!value.trim()) {
+          error = "Name is required";
+        } else if (value.trim().length < 2) {
+          error = "Name must be at least 2 characters";
+        }
+        break;
+      case "email":
+        if (!value.trim()) {
+          error = "Email is required";
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+          error = "Invalid email address";
+        }
+        break;
+      case "phone":
+        if (value.trim() && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/i.test(value)) {
+          error = "Invalid phone number";
+        }
+        break;
+      case "subject":
+        if (!value.trim()) {
+          error = "Subject is required";
+        }
+        break;
+      case "message":
+        if (!value.trim()) {
+          error = "Message is required";
+        } else if (value.trim().length < 10) {
+          error = "Message must be at least 10 characters";
+        }
+        break;
+    }
+
+    setErrors(prev => ({ ...prev, [field]: error }));
+    return !error;
+  };
+
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
 
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
     }
 
     if (!formData.email.trim()) {
@@ -38,12 +96,18 @@ export function Contact() {
       newErrors.email = "Invalid email address";
     }
 
+    if (formData.phone.trim() && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/i.test(formData.phone)) {
+      newErrors.phone = "Invalid phone number";
+    }
+
     if (!formData.subject.trim()) {
       newErrors.subject = "Subject is required";
     }
 
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
     }
 
     setErrors(newErrors);
@@ -120,9 +184,12 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-1 text-base font-semibold">Phone</h3>
-                  <p className="text-muted-foreground text-sm">
+                  <a 
+                    href="tel:+97145890333" 
+                    className="text-muted-foreground text-sm hover:text-accent transition-colors cursor-pointer"
+                  >
                     +971 4 589 0333
-                  </p>
+                  </a>
                 </div>
               </div>
 
@@ -134,9 +201,12 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-1 text-base font-semibold">Email</h3>
-                  <p className="text-muted-foreground text-sm">
+                  <a 
+                    href="mailto:info@rhkproperties.com" 
+                    className="text-muted-foreground text-sm hover:text-accent transition-colors cursor-pointer"
+                  >
                     info@rhkproperties.com
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
@@ -168,10 +238,15 @@ export function Contact() {
                 label="Full Name"
                 placeholder="Your name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) => {
+                  setFormData({ ...formData, name: e.target.value });
+                  if (errors.name) validateField("name", e.target.value);
+                }}
+                onBlur={(e) => validateField("name", e.target.value)}
                 error={!!errors.name}
                 hint={errors.name}
                 required
+                maxLength={50}
                 leftIcon={<span className="text-lg">
                   <User className="h-5 w-5 text-accent" />
                 </span>}
@@ -182,7 +257,11 @@ export function Contact() {
                 type="email"
                 placeholder="your.email@example.com"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                  if (errors.email) validateField("email", e.target.value);
+                }}
+                onBlur={(e) => validateField("email", e.target.value)}
                 error={!!errors.email}
                 hint={errors.email}
                 required
@@ -194,7 +273,13 @@ export function Contact() {
                 type="tel"
                 placeholder="+971 XX XXX XXXX"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={(e) => {
+                  setFormData({ ...formData, phone: e.target.value });
+                  if (errors.phone) validateField("phone", e.target.value);
+                }}
+                onBlur={(e) => validateField("phone", e.target.value)}
+                error={!!errors.phone}
+                hint={errors.phone}
                 leftIcon={<Phone className="h-5 w-5 text-accent" />}
               />
 
@@ -202,10 +287,15 @@ export function Contact() {
                 label="Subject"
                 placeholder="How can we help you?"
                 value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                onChange={(e) => {
+                  setFormData({ ...formData, subject: e.target.value });
+                  if (errors.subject) validateField("subject", e.target.value);
+                }}
+                onBlur={(e) => validateField("subject", e.target.value)}
                 error={!!errors.subject}
                 hint={errors.subject}
                 required
+                maxLength={100}
               />
 
               <div>
@@ -216,9 +306,14 @@ export function Contact() {
                   placeholder="Tell us more about your requirements..."
                   rows={5}
                   value={formData.message}
-                  onChange={(value) => setFormData({ ...formData, message: value })}
+                  onChange={(value) => {
+                    setFormData({ ...formData, message: value });
+                    if (errors.message) validateField("message", value);
+                  }}
+                  onBlur={(value) => validateField("message", value)}
                   error={!!errors.message}
                   hint={errors.message}
+                  maxLength={1500}
                 />
               </div>
 
@@ -236,16 +331,59 @@ export function Contact() {
             </form>
           </div>
         </div>
-        {/* Map Placeholder */}
+        {/* Google Map */}
         <div className="mt-12 md:mt-16">
-          <div className="bg-secondary rounded-xl h-64 md:h-80 lg:h-96 flex items-center justify-center dark:bg-gray-800  border border-gray-200 dark:border-gray-700">
-            <div className="text-center text-muted-foreground text-sm px-4">
-              <MapPin className="h-12 w-12 md:h-16 md:w-16 mx-auto mb-4 text-accent" />
-              <h3 className="mb-2 text-base md:text-lg font-semibold text-gray-900 dark:text-gray-100">Find Us Here</h3>
-              <p>Office 2304 Prime Tower, Burj Khalifa Blvd</p>
-              <p>Business Bay, Dubai, UAE</p>
-              <p className="text-xs mt-2">Google Maps integration available</p>
-            </div>
+          <div 
+            ref={mapContainerRef}
+            className="fullscreen-map relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg group"
+          >
+            {/* Fullscreen Button */}
+            <button
+              onClick={handleFullscreen}
+              className="absolute top-4 right-4 z-10 bg-white dark:bg-gray-800 p-2.5 rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer group-hover:scale-105 transform duration-200"
+              title="Toggle Fullscreen"
+            >
+              <Maximize2 className="h-5 w-5 text-gray-700 dark:text-gray-200" />
+            </button>
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.4276584425896!2d55.269144!3d25.186722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f69d47c2fb8b3%3A0x42b25c8e4b3e4f1c!2sPrime%20Tower%2C%20Business%20Bay%2C%20Dubai!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="RHK Properties LLC Office Location - Prime Tower, Business Bay, Dubai"
+              className={`w-full h-64 md:h-80 lg:h-96 transition-all duration-300 ${
+                theme === 'dark' 
+                  ? 'brightness-90 invert hue-rotate-180 saturate-75 contrast-90' 
+                  : ''
+              }`}
+            />
+          </div>
+          
+          {/* Map Actions */}
+          <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="https://www.google.com/maps/dir//Prime+Tower,+Business+Bay,+Dubai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors text-sm font-medium"
+            >
+              <MapPin className="h-4 w-4" />
+              Get Directions
+            </a>
+            <span className="hidden sm:inline text-gray-400">•</span>
+            <a
+              href="https://www.google.com/maps/place/Prime+Tower,+Business+Bay,+Dubai/@25.186722,55.269144,17z"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors text-sm font-medium"
+            >
+              <ExternalLink className="h-4 w-4" />
+              View Larger Map
+            </a>
           </div>
         </div>
       </div>

@@ -117,9 +117,9 @@ export function About() {
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-accent/90 to-accent/70 z-10" />
         <motion.div
-          initial={{ scale: 1.2, opacity: 0.5 }}
+          initial={{ scale: 1.05, opacity: 0.8 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.4 }}
           className="absolute inset-0"
         >
           <ImageWithFallback
@@ -130,9 +130,9 @@ export function About() {
         </motion.div>
         <div className="container mx-auto px-4 lg:px-8 z-20 text-white text-center">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             <h1 className="text-3xl md:text-5xl lg:text-6xl mb-4 px-2">About RHK Properties LLC</h1>
             <p className="text-base md:text-xl text-white/90 max-w-2xl mx-auto px-2">
@@ -396,9 +396,9 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-4">
-              <Shield className="h-5 w-5 text-accent" />
-              <span className="text-accent font-semibold text-sm">Technology-Enabled Experience</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 dark:bg-accent rounded-full mb-4">
+              <Shield className="h-5 w-5 text-accent dark:text-white" />
+              <span className="text-accent dark:text-white font-semibold text-sm">Technology-Enabled Experience</span>
             </div>
             <h2 className="mb-4 text-2xl md:text-3xl lg:text-4xl">Our Platform & Features</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">

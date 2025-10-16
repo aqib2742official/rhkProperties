@@ -74,12 +74,12 @@ export function FAQ() {
     {
       category: "Investment",
       question: "Do you provide investment advice?",
-      answer: "Yes, we offer strategic investment consulting with market analysis, ROI projections, and portfolio management advice. Our team helps you identify high-potential properties and optimize your real estate investment strategy."
+      answer: "We provide educational guidance and market insights to help you understand Dubai's real estate landscape. Our team can share general market trends, comparable sales data, and area characteristics. For personalized investment recommendations tailored to your financial goals, we encourage you to contact us for a private consultation where we can discuss your specific situation."
     },
     {
       category: "Investment",
       question: "What are the best areas for investment in Dubai?",
-      answer: "Investment potential varies based on your goals. Downtown Dubai, Dubai Marina, and Business Bay offer strong rental yields, while emerging areas like Dubai Hills and Jumeirah Village Circle provide growth potential. We provide detailed market insights tailored to your investment objectives."
+      answer: "Investment potential varies significantly based on individual goals, budget, timeline, and risk tolerance. Different areas offer different advantages—some focus on rental yields, others on capital appreciation or lifestyle amenities. Our team can advise you based on your specific objectives and circumstances. Contact us for personalized insights tailored to your investment criteria."
     }
   ];
 
@@ -92,13 +92,13 @@ export function FAQ() {
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             className="text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
-              <CheckCircle className="h-5 w-5 text-accent" />
-              <span className="text-accent font-semibold text-sm">Got Questions? We've Got Answers</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 dark:bg-accent/40 rounded-full mb-6">
+              <CheckCircle className="h-5 w-5 text-accent dark:text-white" />
+              <span className="text-accent dark:text-white font-semibold text-sm">Got Questions? We've Got Answers</span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6">Frequently Asked Questions</h1>
             <p className="text-muted-foreground text-lg">
@@ -117,9 +117,9 @@ export function FAQ() {
                 key={index}
                 href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
                 className="px-4 py-2 bg-background hover:bg-accent hover:text-accent-foreground rounded-full text-sm transition-colors"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.2, delay: index * 0.05 }}
               >
                 {category}
               </motion.a>
@@ -136,10 +136,10 @@ export function FAQ() {
               <div key={categoryIndex} id={category.toLowerCase().replace(/\s+/g, '-')} className="mb-8">
                 <motion.h2
                   className="text-2xl md:text-3xl font-semibold mb-6 flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.3 }}
                 >
                   {category === "Getting Started" && <Home className="h-6 w-6 text-accent" />}
                   {category === "Documentation & Compliance" && <FileCheck className="h-6 w-6 text-accent" />}
@@ -161,10 +161,10 @@ export function FAQ() {
                         <motion.div
                           key={globalIndex}
                           className="bg-background border border-border rounded-lg overflow-hidden"
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          transition={{ duration: 0.3, delay: index * 0.05 }}
                         >
                           <button
                             onClick={() => setOpenIndex(isOpen ? null : globalIndex)}

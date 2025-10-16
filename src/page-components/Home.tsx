@@ -28,8 +28,8 @@ export function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block px-4 py-2 bg-accent/10 rounded-full">
-              <span className="text-accent text-sm font-semibold">RERA-aligned • Trakheesi-ready • EN/AR • Privacy-first</span>
+            <div className="inline-block px-4 py-2 bg-accent/10 dark:bg-accent rounded-full">
+              <span className="text-accent text-xl md:text-2xl lg:text-3xl font-[500]">RERA-aligned • Trakheesi-ready • EN/AR • Privacy-first</span>
             </div>
           </motion.div>
 
@@ -333,7 +333,7 @@ export function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <motion.div 
+                <motion.div
                   className="relative inline-block mb-6 cursor-pointer"
                   whileHover={{ scale: 1.2 }}
                   transition={{ duration: 0.3 }}
@@ -425,9 +425,9 @@ export function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
-              <Shield className="h-5 w-5 text-accent" />
-              <span className="text-accent font-semibold text-sm">Compliance Built-In</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 dark:bg-accent rounded-full mb-6">
+              <Shield className="h-5 w-5 text-accent dark:text-white" />
+              <span className="text-accent dark:text-white font-semibold text-sm">Compliance Built-In</span>
             </div>
             <h2 className="mb-6 text-2xl md:text-3xl lg:text-4xl">Compliance is built-in.</h2>
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto">

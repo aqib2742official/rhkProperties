@@ -23,7 +23,7 @@ interface ButtonProps extends ButtonBaseProps {
 }
 
 // Constants
-const BASE_CLASS = "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-hidden focus:ring-3 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:cursor-not-allowed";
+const BASE_CLASS = "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-hidden focus:ring-3 focus:ring-offset-2 dark:focus:ring-offset-gray-900 cursor-pointer disabled:cursor-not-allowed";
 
 const SIZE_CLASSES = {
   xs: { normal: "px-3 py-1.5 text-xs gap-1.5", icon: "p-1.5" },
