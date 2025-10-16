@@ -1,0 +1,282 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  /* Light Theme - Luxury UAE Colors */
+  --background: #FAFBFC;
+  --foreground: #1A1D29;
+  --card: #FFFFFF;
+  --card-foreground: #1A1D29;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1D29;
+  --primary: #1A1D29;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F7FA;
+  --secondary-foreground: #1A1D29;
+  --muted: #E8EBF0;
+  --muted-foreground: #6B7280;
+  /* Brand Color */
+  --accent: #161950;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  /* Remove borders - use subtle shadows instead */
+  --border: transparent;
+  --input: #F5F7FA;
+  --input-background: #F5F7FA;
+  --ring: #161950;
+  --radius: 12px;
+  /* Chart colors */
+  --chart-1: #161950;
+  --chart-2: #4F46E5;
+  --chart-3: #06B6D4;
+  --chart-4: #10B981;
+  --chart-5: #F59E0B;
+}
+
+.dark {
+  /* Dark Theme - Sophisticated Night */
+  --background: #0F1419;
+  --foreground: #F5F7FA;
+  --card: #1A1D29;
+  --card-foreground: #F5F7FA;
+  --popover: #1A1D29;
+  --popover-foreground: #F5F7FA;
+  --primary: #F5F7FA;
+  --primary-foreground: #0F1419;
+  --secondary: #1F2937;
+  --secondary-foreground: #F5F7FA;
+  --muted: #374151;
+  --muted-foreground: #9CA3AF;
+  --accent: #1E2370;
+  --accent-foreground: #FFFFFF;
+  --accent-text: #A5B4FC; /* Light indigo for text in dark mode */
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: transparent;
+  --input: #1F2937;
+  --ring: #1E2370;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    outline-color: var(--ring);
+    border-color: transparent;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Remove all default borders */
+  h1, h2, h3, h4, h5, h6, p, div, section, article {
+    border: none;
+  }
+}
+
+/* Typography - Premium feel */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    h4 {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    label, button {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Premium Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Smooth transitions for theme switching and interactions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, 
+select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--secondary);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(101, 101, 101, 0.5);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent);
+}
+
+/* Grid auto-rows for consistent card heights */
+.auto-rows-fr {
+  grid-auto-rows: 1fr;
+}
+
+/* Text Gradients */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, var(--accent), rgba(212, 175, 55, 0.6));
+}
+
+/* Image Optimization */
+img {
+  user-select: none;
+}
+
+/* Remove outline ring from non-interactive elements */
+div, span, p, h1, h2, h3, h4, h5, h6 {
+  outline: none !important;
+}
+
+/* Ensure SVG icons inherit proper colors from parent text color */
+svg {
+  color: currentColor;
+}
+
+/* Force SVG icons in dark mode to be light colored when not explicitly styled */
+.dark svg:not([class*="text-"]) {
+  color: var(--foreground);
+}
+
+/* Override text-accent in dark mode to use light color for better contrast */
+.dark .text-accent,
+.dark .text-accent svg {
+  color: #E0E7FF !important;
+}
+
+/* Ensure hover states also use appropriate colors */
+.dark .hover\:text-accent:hover,
+.dark .hover\:text-accent:hover svg {
+  color: #E0E7FF !important;
+}
