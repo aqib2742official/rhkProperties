@@ -1,9 +1,9 @@
 'use client';
 
 import { Crown, Maximize, Waves, Star, Wine, Sparkles } from "lucide-react";
-import Link from "next/link";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../../../components/figma/ImageWithFallback";
+import { PropertyCTA } from "../../../components/PropertyCTA";
 import penthouseHero from "@/assets/images/penthouse-hero.jpg";
 import penthouseInterior from "@/assets/images/penthouse-interior.jpg";
 import penthouseFeature1 from "@/assets/images/penthouse-feature-1.jpg";
@@ -258,21 +258,11 @@ export default function PenthousesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-accent to-accent/80 text-white">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl mb-4">Discover Your Sky Palace</h2>
-          <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-            Explore our exclusive portfolio of Dubai's most prestigious penthouses. Schedule a private viewing with our luxury property specialists
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-white text-gray-700 rounded-lg hover:bg-white/90 transition-colors font-semibold"
-          >
-            Arrange Private Viewing
-          </Link>
-        </div>
-      </section>
+      {/* CTA Section */}
+      <PropertyCTA 
+        title="Discover Your Sky Palace"
+        description="Explore our exclusive portfolio of Dubai's most prestigious penthouses. Schedule a private viewing with our luxury property specialists"
+      />
     </div>
   );
 }

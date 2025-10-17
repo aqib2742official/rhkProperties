@@ -42,7 +42,7 @@ const slides: Slide[] = [
     id: 4,
     image: apartmentHero.src,
     title: "Compliance Built-In.",
-    subtitle: "RERA-Aligned • Trakheesi-Ready • Privacy-First.",
+    subtitle: "Compliance & Trust, Built Into Every Transaction.",
     description: "Built on trust and accountability with bilingual contracts, secure e-signing, and verified advertising to ensure every step meets Dubai's real estate standards."
   }
 ];

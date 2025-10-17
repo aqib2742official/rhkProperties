@@ -1,9 +1,9 @@
 'use client';
 
 import { Building, Shield, Dumbbell, UtensilsCrossed, TrendingUp, MapPin } from "lucide-react";
-import Link from "next/link";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../../../components/figma/ImageWithFallback";
+import { PropertyCTA } from "../../../components/PropertyCTA";
 import apartmentHero from "@/assets/images/apartment-hero.jpg";
 import apartmentLiving from "@/assets/images/apartment-living.jpg";
 import apartmentLuxury from "@/assets/images/apartment-luxury.jpg";
@@ -255,21 +255,11 @@ export default function PremiumApartmentsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-accent to-accent/80 text-white">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl mb-4">Find Your Perfect Apartment</h2>
-          <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-            Explore our exclusive portfolio of premium apartments and discover the ideal home or investment opportunity
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-white text-gray-700 rounded-lg hover:bg-white/90 transition-colors font-semibold"
-          >
-            Contact Our Team
-          </Link>
-        </div>
-      </section>
+      {/* CTA Section */}
+      <PropertyCTA 
+        title="Find Your Perfect Apartment"
+        description="Explore our exclusive portfolio of premium apartments and discover the ideal home or investment opportunity"
+      />
     </div>
   );
 }

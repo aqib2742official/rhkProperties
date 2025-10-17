@@ -1,9 +1,9 @@
 'use client';
 
 import { Home, Users, Trees, Car, GraduationCap, Heart } from "lucide-react";
-import Link from "next/link";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../../../components/figma/ImageWithFallback";
+import { PropertyCTA } from "../../../components/PropertyCTA";
 import townhouseHero from "@/assets/images/townhouse-hero.jpg";
 import townhouseInterior from "@/assets/images/townhouse-interior.jpg";
 import villaLiving from "@/assets/images/villa-living.jpg";
@@ -287,21 +287,11 @@ export default function TownhousesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-accent to-accent/80 text-white">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl mb-4">Find Your Family Home</h2>
-          <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-            Discover the perfect townhouse for your family in Dubai's best communities. Contact our team for personalized recommendations
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-white text-gray-700 rounded-lg hover:bg-white/90 transition-colors font-semibold"
-          >
-            Explore Townhouses
-          </Link>
-        </div>
-      </section>
+      {/* CTA Section */}
+      <PropertyCTA 
+        title="Find Your Family Home"
+        description="Discover the perfect townhouse for your family in Dubai's best communities. Contact our team for personalized recommendations"
+      />
     </div>
   );
 }

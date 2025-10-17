@@ -1,11 +1,10 @@
 'use client';
 
-import { ArrowRight, Building2, CheckCircle2, Users, TrendingUp, Clock, Shield, FileCheck } from "lucide-react";
-import Link from "next/link";
+import { Building2, CheckCircle2, Users, TrendingUp, Clock, Shield, FileCheck } from "lucide-react";
 import { motion } from "motion/react";
-import { Button } from "../components/ui/button";
 import { PropertyCard } from "../components/PropertyCard";
 import { PremiumSlider } from "../components/PremiumSlider";
+import { PropertyCTA } from "../components/PropertyCTA";
 import { properties } from "../data/properties";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import officeImage from "@/assets/images/home-about-office.jpg";
@@ -33,7 +32,7 @@ export function Home() {
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <div className="inline-block px-4 py-2 bg-accent/10 dark:bg-accent rounded-full">
-              <span className="text-accent text-xl md:text-2xl lg:text-3xl font-[500]">RERA-aligned • Trakheesi-ready • EN/AR • Privacy-first</span>
+              <span className="text-accent text-xl md:text-2xl lg:text-3xl font-[500]">RERA-aligned • Trakheesi-ready • Privacy-first</span>
             </div>
           </motion.div>
 
@@ -479,7 +478,7 @@ export function Home() {
               <CheckCircle2 className="h-10 w-10 text-accent mx-auto mb-4" />
               <h3 className="mb-2 text-lg font-semibold">Bilingual Contracts</h3>
               <p className="text-sm text-muted-foreground">
-                Form A and Form F securely e-signed in EN/AR with verifiable trails
+                Form A and Form F securely e-signed in with verifiable trails
               </p>
             </motion.div>
           </div>
@@ -487,31 +486,10 @@ export function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-accent text-accent-foreground">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <h2 className="mb-4 text-2xl md:text-3xl lg:text-4xl">Ready to Find Your Perfect Property?</h2>
-            <p className="text-accent-foreground/90 mb-8 max-w-2xl mx-auto">
-              Let our expert team help you discover the ideal home or investment opportunity in Dubai
-            </p>
-            <Button
-              size="lg"
-              variant="secondary"
-              asChild
-            >
-              <Link href="/contact">
-                Get in Touch
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+      <PropertyCTA 
+        title="Ready to Find Your Perfect Property?"
+        description="Let our expert team help you discover the ideal home or investment opportunity in Dubai"
+      />
     </div>
   );
 }

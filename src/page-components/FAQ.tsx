@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "motion/react";
-import { ChevronDown, CheckCircle, Shield, FileCheck, Users, Home } from "lucide-react";
+import { ChevronDown, CheckCircle, Shield, FileCheck, Users, Home, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -208,7 +208,7 @@ export function FAQ() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-6 md:py-10 bg-gradient-to-r from-accent to-accent/80 text-white">
+      <section className="py-6 md:py-10 bg-gradient-to-r from-accent to-accent/80 dark:from-accent/60 dark:to-accent/20 text-white">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -217,16 +217,19 @@ export function FAQ() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="mb-4 text-2xl md:text-3xl lg:text-4xl">Still Have Questions?</h2>
-            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-white/90 mb-8 max-w-xl mx-auto">
               Our team is here to help. Get in touch and we'll provide personalized answers to all your real estate questions.
             </p>
-            <Link href="/contact">
+            <Link href="/contact" className="inline-block">
               <motion.button
-                className="inline-block px-6 py-3 md:px-8 md:py-4 bg-white text-gray-700 rounded-lg hover:bg-white/90 transition-colors cursor-pointer text-sm md:text-base font-semibold"
+                className="flex items-center gap-2 px-3 py-2 bg-white text-gray-900 font-medium 
+               rounded-lg hover:bg-white/90 transition-colors cursor-pointer 
+               text-sm md:text-base w-max"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact Us Today
+                Get in Touch
+                <ArrowRight className="h-5 w-5 text-gray-900" />
               </motion.button>
             </Link>
           </motion.div>

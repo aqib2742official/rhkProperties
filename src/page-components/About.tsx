@@ -1,9 +1,9 @@
 'use client';
 
 import { Target, TrendingUp, Shield, Globe, Heart, Sparkles, Building, Clock, CheckCircle } from "lucide-react";
-import Link from "next/link";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { PropertyCTA } from "../components/PropertyCTA";
 import officeImage from "@/assets/images/home-about-office.jpg";
 import teamPhoto from "@/assets/images/about-team-photo.jpg";
 
@@ -36,25 +36,25 @@ export function About() {
   // ];
 
   const platformFeatures = [
-    { 
-      icon: TrendingUp, 
-      title: "Smart Deal Analysis", 
+    {
+      icon: TrendingUp,
+      title: "Smart Deal Analysis",
       description: "Instant property valuation using comparable sales data and market trends to help you identify fair deals"
     },
-    { 
-      icon: Clock, 
-      title: "Real-Time Tracking", 
+    {
+      icon: Clock,
+      title: "Real-Time Tracking",
       description: "Live dashboard showing your transaction progress from documentation to closing with complete transparency"
     },
-    { 
-      icon: Shield, 
-      title: "Built-In Compliance", 
+    {
+      icon: Shield,
+      title: "Built-In Compliance",
       description: "RERA-aligned processes with Trakheesi-verified permits and bilingual contracts for complete legal security"
     },
-    { 
-      icon: CheckCircle, 
-      title: "5-Minute Response", 
-      description: "Fast, expert support with guaranteed response times and dedicated assistance throughout your journey"
+    {
+      icon: CheckCircle,
+      title: "Instant Response",
+      description: "Fast, expert support with guaranteed response time and dedicated assistance throughout your journey"
     }
   ];
 
@@ -149,42 +149,33 @@ export function About() {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
+            <div>
               <h2 className="mb-4 md:mb-6 text-2xl md:text-3xl lg:text-4xl">Who We Are</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Founded in 2025, we set out to build a client-first, technology-enabled real-estate experience for Dubai, one that's as transparent as it is premium. 
+                  Founded in 2025, we set out to build a client-first, technology-enabled real-estate experience for Dubai, one that's as transparent as it is premium.
                   Our focus is simple: elevate every step of the journey with clear communication, disciplined process, and precise execution.
                 </p>
                 <p>
-                  We combine professional service with modern tools to deliver an experience that feels both premium and refreshingly straightforward. 
+                  We combine professional service with modern tools to deliver an experience that feels both premium and refreshingly straightforward.
                   Every listing is verified, every milestone is tracked, and every interaction is designed to move you forward with confidence.
                 </p>
                 <p>
-                  Our team brings deep market knowledge, proven negotiation skills, and a genuine commitment to protecting your interests. 
+                  Our team brings deep market knowledge, proven negotiation skills, and a genuine commitment to protecting your interests.
                   Whether you're buying your first home or managing a property portfolio, we provide the clarity and support you deserve.
                 </p>
               </div>
-            </motion.div>
-            <motion.div
+            </div>
+            <div
               className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden will-change-transform"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
+              style={{ pointerEvents: 'none' }}
             >
               <ImageWithFallback
                 src={teamPhoto.src}
                 alt="RHK Properties Team"
                 className="w-full h-full object-cover"
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -247,8 +238,8 @@ export function About() {
               </div>
               <h2 className="mb-4 text-xl md:text-2xl lg:text-3xl">Our Mission</h2>
               <p className="text-muted-foreground">
-                We standardize the property journey end-to-end by combining transparent workflows, fast communication, and rigorous compliance. 
-                Our mission is to remove uncertainty at each milestone (onboarding, permits, media, viewings, offers, closing), empower agents with excellent tools, 
+                We standardize the property journey end-to-end by combining transparent workflows, fast communication, and rigorous compliance.
+                Our mission is to remove uncertainty at each milestone (onboarding, permits, media, viewings, offers, closing), empower agents with excellent tools,
                 and give clients the real-time clarity they deserve for every transaction, every time.
               </p>
             </motion.div>
@@ -265,8 +256,8 @@ export function About() {
               </div>
               <h2 className="mb-4 text-xl md:text-2xl lg:text-3xl">Our Vision</h2>
               <p className="text-muted-foreground">
-                To make Dubai real estate clear, confident, and delightfully efficient where every seller and buyer can see the path ahead, 
-                trust the data behind each decision, and move forward without friction. We envision a market where transparency and quality 
+                To make Dubai real estate clear, confident, and delightfully efficient where every seller and buyer can see the path ahead,
+                trust the data behind each decision, and move forward without friction. We envision a market where transparency and quality
                 are the standard, not the exception.
               </p>
             </motion.div>
@@ -294,7 +285,7 @@ export function About() {
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-accent/20" />
             {/* Mobile timeline line - on the left */}
             <div className="md:hidden absolute left-4 top-0 h-full w-0.5 bg-accent/20" />
-            
+
             <div className="space-y-8 md:space-y-12">
               {customerPathway.map((item, index) => (
                 <motion.div
@@ -487,30 +478,10 @@ export function About() {
       </section> */}
 
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-r from-accent to-accent/80 text-white">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="mb-4 text-2xl md:text-3xl lg:text-4xl">Ready to Work With Us?</h2>
-            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              Let our expert team guide you through your real estate journey with professionalism and care
-            </p>
-            <Link href="/contact">
-              <motion.button
-                className="inline-block px-6 py-3 md:px-8 md:py-4 bg-white text-gray-700 rounded-lg hover:bg-white/90 transition-colors cursor-pointer text-sm md:text-base"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get in Touch Today
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <PropertyCTA 
+        title="Ready to Work With Us?"
+        description="Let our expert team guide you through your real estate journey with professionalism and care"
+      />
     </div>
   );
 }
