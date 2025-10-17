@@ -8,21 +8,17 @@ import '@/index.css';
 import fabIconLight from '@/assets/fab-icon-light.svg';
 import fabIconDark from '@/assets/favicon-white.svg';
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true,
-});
+  const inter = Inter({ 
+    subsets: ['latin'],
+    display: 'optional',
+    preload: true,
+    adjustFontFallback: true,
+    fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  });
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAFBFC' },
-    { media: '(prefers-color-scheme: dark)', color: '#0F1419' },
-  ],
 };
 
 export const metadata = {
@@ -81,8 +77,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta charSet="utf-8" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="theme-color" content="#FAFBFC" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0F1419" media="(prefers-color-scheme: dark)" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google.com" />
         <script
@@ -112,6 +110,19 @@ export default function RootLayout({
               /* Prevent flash of unstyled content */
               html:not(.light):not(.dark) {
                 visibility: hidden;
+              }
+              /* Critical CSS for performance */
+              body {
+                font-family: system-ui, -apple-system, sans-serif;
+              }
+              img {
+                max-width: 100%;
+                height: auto;
+              }
+              /* Content visibility for better rendering */
+              section {
+                content-visibility: auto;
+                contain-intrinsic-size: auto 500px;
               }
             `,
           }}

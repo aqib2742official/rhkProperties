@@ -350,7 +350,7 @@ export function Contact() {
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer"
               title="RHK Properties LLC Office Location - Prime Tower, Business Bay, Dubai"
               className="map-iframe w-full h-64 md:h-80 lg:h-96 transition-all duration-300"
             />

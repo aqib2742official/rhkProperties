@@ -213,6 +213,8 @@
 html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -294,14 +296,16 @@ select:focus-visible, textarea:focus-visible {
 
 /* Text Gradients */
 .text-gradient {
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   background-image: linear-gradient(to right, var(--accent), rgba(212, 175, 55, 0.6));
 }
 
 /* Image Optimization */
 img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
 }
 
@@ -386,15 +390,30 @@ body {
   }
 }
 
-/* Vendor prefixes for better browser compatibility */
-.backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl {
-  -webkit-backdrop-filter: blur(var(--tw-backdrop-blur));
-  backdrop-filter: blur(var(--tw-backdrop-blur));
+/* Comprehensive vendor prefix support for backdrop-filter */
+.backdrop-blur,
+.backdrop-blur-none,
+.backdrop-blur-sm, 
+.backdrop-blur-md, 
+.backdrop-blur-lg, 
+.backdrop-blur-xl,
+.backdrop-blur-2xl,
+.backdrop-blur-3xl {
+  -webkit-backdrop-filter: blur(var(--tw-backdrop-blur, 8px));
+  backdrop-filter: blur(var(--tw-backdrop-blur, 8px));
 }
 
-/* Add support for older browsers */
+/* Support for all backdrop utilities */
+[class*="backdrop-blur"],
+[class*="backdrop-filter"] {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur, blur(8px)) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
+  backdrop-filter: var(--tw-backdrop-blur, blur(8px)) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
+}
+
+/* Fallback for browsers without backdrop-filter support */
 @supports not (backdrop-filter: blur(1px)) {
-  .backdrop-blur-xl {
+  .backdrop-blur-xl,
+  [class*="backdrop-blur"] {
     background-color: rgba(0, 0, 0, 0.8);
   }
 }
@@ -423,6 +442,6 @@ body {
 
 /* Dark mode map styling - CSS-based to prevent hydration errors */
 .dark .map-iframe {
-  filter: brightness(0.9) invert(1) hue-rotate(180deg) saturate(0.75) contrast(0.9);
   -webkit-filter: brightness(0.9) invert(1) hue-rotate(180deg) saturate(0.75) contrast(0.9);
+  filter: brightness(0.9) invert(1) hue-rotate(180deg) saturate(0.75) contrast(0.9);
 }
