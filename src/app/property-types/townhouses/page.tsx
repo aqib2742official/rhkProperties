@@ -7,7 +7,7 @@ import { ImageWithFallback } from "../../../components/figma/ImageWithFallback";
 import townhouseHero from "@/assets/images/townhouse-hero.jpg";
 import townhouseInterior from "@/assets/images/townhouse-interior.jpg";
 import villaLiving from "@/assets/images/villa-living.jpg";
-import townhouseDesign from "@/assets/images/townhouse-design.jpg";
+import townhouseDesign from "@/assets/images/townhouse-living.jpg";
 import townhouseLiving from "@/assets/images/townhouse-living.jpg";
 
 export default function TownhousesPage() {
