@@ -359,6 +359,7 @@ body {
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
   overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Prevent animations from blocking scroll */
@@ -383,4 +384,45 @@ body {
   * {
     will-change: auto !important;
   }
+}
+
+/* Vendor prefixes for better browser compatibility */
+.backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(var(--tw-backdrop-blur));
+  backdrop-filter: blur(var(--tw-backdrop-blur));
+}
+
+/* Add support for older browsers */
+@supports not (backdrop-filter: blur(1px)) {
+  .backdrop-blur-xl {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* User select optimization */
+* {
+  -webkit-user-select: inherit;
+  -moz-user-select: inherit;
+  -ms-user-select: inherit;
+  user-select: inherit;
+}
+
+/* Transform optimizations */
+.transform {
+  -webkit-transform: var(--tw-transform);
+  -ms-transform: var(--tw-transform);
+  transform: var(--tw-transform);
+}
+
+/* Transition improvements */
+.transition-all, .transition-colors, .transition-transform {
+  -webkit-transition: var(--tw-transition-property);
+  -o-transition: var(--tw-transition-property);
+  transition: var(--tw-transition-property);
+}
+
+/* Dark mode map styling - CSS-based to prevent hydration errors */
+.dark .map-iframe {
+  filter: brightness(0.9) invert(1) hue-rotate(180deg) saturate(0.75) contrast(0.9);
+  -webkit-filter: brightness(0.9) invert(1) hue-rotate(180deg) saturate(0.75) contrast(0.9);
 }

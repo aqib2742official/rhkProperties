@@ -6,7 +6,6 @@ import { Button } from "@/components/atoms";
 import InputField from "../components/molecules/form/input/InputField";
 import TextArea from "../components/molecules/form/input/TextArea";
 import { toast } from "sonner";
-import { useTheme } from "../components/ThemeProvider";
 interface ContactFormData {
   name: string;
   email: string;
@@ -16,7 +15,6 @@ interface ContactFormData {
 }
 
 export function Contact() {
-  const { theme } = useTheme();
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ContactFormData>({
@@ -127,7 +125,6 @@ export function Contact() {
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    console.log("Form submitted:", formData);
     toast.success("Thank you for your inquiry! We'll get back to you soon.");
 
     setFormData({
@@ -247,9 +244,7 @@ export function Contact() {
                 hint={errors.name}
                 required
                 maxLength={50}
-                leftIcon={<span className="text-lg">
-                  <User className="h-5 w-5 text-accent" />
-                </span>}
+                leftIcon={<User className="h-5 w-5 text-accent" />}
               />
 
               <InputField
@@ -342,6 +337,8 @@ export function Contact() {
               onClick={handleFullscreen}
               className="absolute top-4 right-4 z-10 bg-white dark:bg-gray-800 p-2.5 rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer group-hover:scale-105 transform duration-200"
               title="Toggle Fullscreen"
+              aria-label="Toggle fullscreen map view"
+              type="button"
             >
               <Maximize2 className="h-5 w-5 text-gray-700 dark:text-gray-200" />
             </button>
@@ -355,11 +352,7 @@ export function Contact() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="RHK Properties LLC Office Location - Prime Tower, Business Bay, Dubai"
-              className={`w-full h-64 md:h-80 lg:h-96 transition-all duration-300 ${
-                theme === 'dark' 
-                  ? 'brightness-90 invert hue-rotate-180 saturate-75 contrast-90' 
-                  : ''
-              }`}
+              className="map-iframe w-full h-64 md:h-80 lg:h-96 transition-all duration-300"
             />
           </div>
           
@@ -369,16 +362,18 @@ export function Contact() {
               href="https://www.google.com/maps/dir//Prime+Tower,+Business+Bay,+Dubai"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Get directions to RHK Properties office in Prime Tower, Business Bay, Dubai"
               className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors text-sm font-medium"
             >
               <MapPin className="h-4 w-4" />
               Get Directions
             </a>
-            <span className="hidden sm:inline text-gray-400">•</span>
+            <span className="hidden sm:inline text-gray-400" aria-hidden="true">•</span>
             <a
               href="https://www.google.com/maps/place/Prime+Tower,+Business+Bay,+Dubai/@25.186722,55.269144,17z"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="View larger map of RHK Properties office location"
               className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors text-sm font-medium"
             >
               <ExternalLink className="h-4 w-4" />

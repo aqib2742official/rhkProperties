@@ -170,14 +170,19 @@ export function FAQ() {
                           <button
                             onClick={() => setOpenIndex(isOpen ? null : globalIndex)}
                             className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-secondary/50 transition-colors"
+                            aria-expanded={isOpen}
+                            aria-controls={`faq-answer-${globalIndex}`}
+                            type="button"
                           >
                             <span className="font-semibold text-base md:text-lg pr-4">{faq.question}</span>
                             <ChevronDown
                               className={`h-5 w-5 flex-shrink-0 text-accent transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
                                 }`}
+                              aria-hidden="true"
                             />
                           </button>
                           <motion.div
+                            id={`faq-answer-${globalIndex}`}
                             initial={false}
                             animate={{
                               height: isOpen ? 'auto' : 0,
@@ -185,6 +190,8 @@ export function FAQ() {
                             }}
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
+                            role="region"
+                            aria-labelledby={`faq-question-${globalIndex}`}
                           >
                             <div className="px-6 pb-4 text-muted-foreground">
                               {faq.answer}

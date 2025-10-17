@@ -54,15 +54,18 @@ export function PremiumSlider() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlide();
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, []);
 
-  const nextSlide = () => {
-    setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
-  };
+  // Removed nextSlide function as navigation arrows are commented out
+  // Uncomment when arrows are re-enabled:
+  // const nextSlide = () => {
+  //   setDirection(1);
+  //   setCurrentIndex((prev) => (prev + 1) % slides.length);
+  // };
 
   const goToSlide = (index: number) => {
     setDirection(index > currentIndex ? 1 : -1);
@@ -194,7 +197,7 @@ export function PremiumSlider() {
       </button> */}
 
       {/* Dot Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3" role="group" aria-label="Slider navigation">
         {slides.map((_, index) => (
           <motion.button
             key={index}
@@ -205,6 +208,9 @@ export function PremiumSlider() {
               }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
+            aria-label={`Go to slide ${index + 1}: ${slides[index].title}`}
+            aria-current={index === currentIndex ? "true" : "false"}
+            type="button"
           />
         ))}
       </div>

@@ -71,6 +71,8 @@ export function Header() {
               onClick={toggleTheme}
               className="ml-2"
               suppressHydrationWarning
+              aria-label="Toggle theme"
+              title="Toggle light/dark theme"
             >
               <Moon className="h-5 w-5 dark:hidden" />
               <Sun className="h-5 w-5 hidden dark:block" />
@@ -84,6 +86,8 @@ export function Header() {
               size="icon"
               onClick={toggleTheme}
               suppressHydrationWarning
+              aria-label="Toggle theme"
+              title="Toggle light/dark theme"
             >
               <Moon className="h-6 w-6 dark:hidden" />
               <Sun className="h-6 w-6 hidden dark:block" />
@@ -91,7 +95,9 @@ export function Header() {
             <button
               className="p-2 cursor-pointer"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              type="button"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

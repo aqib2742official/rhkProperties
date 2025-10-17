@@ -22,16 +22,40 @@ export function Footer() {
               Your trusted partner for luxury real estate in the UAE, delivering clear process, quality presentation, and a premium client experience.
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="hover:text-accent transition-colors">
+              <a 
+                href="https://facebook.com/rhkproperties" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
+                className="hover:text-accent transition-colors"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a 
+                href="https://instagram.com/rhkproperties" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                className="hover:text-accent transition-colors"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a 
+                href="https://twitter.com/rhkproperties" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Follow us on Twitter"
+                className="hover:text-accent transition-colors"
+              >
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a 
+                href="https://linkedin.com/company/rhkproperties" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Connect with us on LinkedIn"
+                className="hover:text-accent transition-colors"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
