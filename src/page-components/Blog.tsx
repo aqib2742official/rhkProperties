@@ -78,7 +78,7 @@ export function Blog() {
                   />
                 </div>
               </div>
-              <CardContent className="p-6 flex flex-col flex-1">
+              <CardContent className=" flex flex-col flex-1">
                 <Badge variant="secondary" className="mb-3 w-fit">
                   {post.category}
                 </Badge>

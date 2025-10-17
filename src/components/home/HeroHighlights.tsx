@@ -26,7 +26,7 @@ export function HeroHighlights() {
             <div className="flex justify-center mb-4">
               <Clock className="h-12 w-12 text-accent" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">5-Minute Response Promise</h3>
+            <h3 className="text-lg font-semibold mb-2">Instant Response Promise</h3>
             <p className="text-muted-foreground text-sm">New inquiries get a fast, helpful reply backed by an expert support team</p>
           </div>
 

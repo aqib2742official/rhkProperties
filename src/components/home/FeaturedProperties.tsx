@@ -23,6 +23,7 @@ export function FeaturedProperties() {
             Expect verified details, true-to-life media, and clean, consistent presentation so decisions are easy and informed.
           </p>
         </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 auto-rows-fr">
           {featuredProperties.map((property) => (
             <PropertyCard

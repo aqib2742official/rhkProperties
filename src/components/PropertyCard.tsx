@@ -28,7 +28,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
       className="h-full"
     >
       <Card className="group overflow-hidden h-full flex flex-col">
-      <div className="relative w-full overflow-hidden" style={{ paddingBottom: '85%' }}>
+      <div className="relative w-full overflow-hidden" style={{ paddingBottom: '75%' }}>
         <div className="absolute inset-0">
           <ImageWithFallback
             src={property.image}

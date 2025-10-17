@@ -153,12 +153,14 @@ export default function CommercialPropertiesPage() {
                 </div>
               </div>
             </div>
-            <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden">
-              <ImageWithFallback
-                src={commercialOffice.src}
-                alt="Modern Office Space"
-                className="w-full h-full object-cover"
-              />
+            <div className="relative w-full overflow-hidden rounded-lg" style={{ paddingBottom: '75%' }}>
+              <div className="absolute inset-0">
+                <ImageWithFallback
+                  src={commercialOffice.src}
+                  alt="Modern Office Space"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -199,12 +201,14 @@ export default function CommercialPropertiesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <div className="relative h-48">
-                  <ImageWithFallback
-                    src={location.image}
-                    alt={location.name}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="relative w-full overflow-hidden" style={{ paddingBottom: '75%' }}>
+                  <div className="absolute inset-0">
+                    <ImageWithFallback
+                      src={location.image}
+                      alt={location.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{location.name}</h3>
