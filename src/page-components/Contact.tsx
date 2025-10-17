@@ -181,8 +181,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-1 text-base font-semibold">Phone</h3>
-                  <a 
-                    href="tel:+97145890333" 
+                  <a
+                    href="tel:+97145890333"
                     className="text-muted-foreground text-sm hover:text-accent transition-colors cursor-pointer"
                   >
                     +971 4 589 0333
@@ -198,8 +198,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-1 text-base font-semibold">Email</h3>
-                  <a 
-                    href="mailto:info@rhkproperties.com" 
+                  <a
+                    href="mailto:info@rhkproperties.com"
                     className="text-muted-foreground text-sm hover:text-accent transition-colors cursor-pointer"
                   >
                     info@rhkproperties.com
@@ -328,7 +328,7 @@ export function Contact() {
         </div>
         {/* Google Map */}
         <div className="mt-12 md:mt-16">
-          <div 
+          <div
             ref={mapContainerRef}
             className="fullscreen-map relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg group"
           >
@@ -355,7 +355,7 @@ export function Contact() {
               className="map-iframe w-full h-64 md:h-80 lg:h-96 transition-all duration-300"
             />
           </div>
-          
+
           {/* Map Actions */}
           <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a

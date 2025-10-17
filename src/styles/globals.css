@@ -68,7 +68,8 @@
   --muted-foreground: #9CA3AF;
   --accent: #1E2370;
   --accent-foreground: #FFFFFF;
-  --accent-text: #A5B4FC; /* Light indigo for text in dark mode */
+  --accent-text: #A5B4FC;
+  /* Light indigo for text in dark mode */
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
   /* Error Colors - Dark Mode */
@@ -156,7 +157,16 @@
   }
 
   /* Remove all default borders */
-  h1, h2, h3, h4, h5, h6, p, div, section, article {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  div,
+  section,
+  article {
     border: none;
   }
 }
@@ -196,7 +206,8 @@
       line-height: 1.7;
     }
 
-    label, button {
+    label,
+    button {
       font-size: 0.9375rem;
       font-weight: 500;
       line-height: 1.5;
@@ -218,15 +229,18 @@ html {
 }
 
 body {
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Premium Animations */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-12px);
   }
@@ -240,6 +254,7 @@ body {
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
@@ -247,12 +262,10 @@ body {
 
 .animate-shimmer {
   animation: shimmer 3s linear infinite;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212, 175, 55, 0.2) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.2) 50%,
+      transparent 100%);
   background-size: 1000px 100%;
 }
 
@@ -263,8 +276,11 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:focus-visible, a:focus-visible, input:focus-visible, 
-select:focus-visible, textarea:focus-visible {
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -310,7 +326,15 @@ img {
 }
 
 /* Remove outline ring from non-interactive elements */
-div, span, p, h1, h2, h3, h4, h5, h6 {
+div,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   outline: none !important;
 }
 
@@ -352,7 +376,8 @@ svg {
 }
 
 /* Prevent horizontal overflow without blocking scroll */
-html, body {
+html,
+body {
   max-width: 100vw;
   overflow-x: clip;
   overscroll-behavior-x: none;
@@ -383,7 +408,7 @@ body {
     overflow-x: clip;
     overflow-y: auto;
   }
-  
+
   /* Prevent layout shifts that cause scroll lock */
   * {
     will-change: auto !important;
@@ -393,9 +418,9 @@ body {
 /* Comprehensive vendor prefix support for backdrop-filter */
 .backdrop-blur,
 .backdrop-blur-none,
-.backdrop-blur-sm, 
-.backdrop-blur-md, 
-.backdrop-blur-lg, 
+.backdrop-blur-sm,
+.backdrop-blur-md,
+.backdrop-blur-lg,
 .backdrop-blur-xl,
 .backdrop-blur-2xl,
 .backdrop-blur-3xl {
@@ -412,6 +437,7 @@ body {
 
 /* Fallback for browsers without backdrop-filter support */
 @supports not (backdrop-filter: blur(1px)) {
+
   .backdrop-blur-xl,
   [class*="backdrop-blur"] {
     background-color: rgba(0, 0, 0, 0.8);
@@ -434,7 +460,9 @@ body {
 }
 
 /* Transition improvements */
-.transition-all, .transition-colors, .transition-transform {
+.transition-all,
+.transition-colors,
+.transition-transform {
   -webkit-transition: var(--tw-transition-property);
   -o-transition: var(--tw-transition-property);
   transition: var(--tw-transition-property);

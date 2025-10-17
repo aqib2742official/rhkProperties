@@ -63,7 +63,7 @@ export function PremiumSlider() {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % slides.length);
     }, 5000);
-    
+
     return () => clearInterval(timer);
   }, []);
 
@@ -153,8 +153,8 @@ export function PremiumSlider() {
             key={index}
             onClick={() => goToSlide(index)}
             className={`h-2 rounded-full transition-all ${index === currentIndex
-                ? "bg-accent w-12"
-                : "bg-white/40 w-2 hover:bg-white/60"
+              ? "bg-accent w-12"
+              : "bg-white/40 w-2 hover:bg-white/60"
               }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}

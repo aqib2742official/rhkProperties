@@ -285,7 +285,6 @@ export function About() {
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-accent/20" />
             {/* Mobile timeline line - on the left */}
             <div className="md:hidden absolute left-4 top-0 h-full w-0.5 bg-accent/20" />
-
             <div className="space-y-8 md:space-y-12">
               {customerPathway.map((item, index) => (
                 <motion.div
