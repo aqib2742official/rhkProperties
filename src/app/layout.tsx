@@ -77,7 +77,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="theme-color" content="#FAFBFC" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0F1419" media="(prefers-color-scheme: dark)" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
@@ -93,7 +92,6 @@ export default function RootLayout({
                   root.classList.remove('light', 'dark');
                   root.classList.add(theme);
                   root.style.colorScheme = theme;
-                  // Add attribute to prevent flash
                   root.setAttribute('data-theme', theme);
                 } catch (e) {
                   document.documentElement.classList.add('light');
@@ -101,29 +99,6 @@ export default function RootLayout({
                   document.documentElement.setAttribute('data-theme', 'light');
                 }
               })();
-            `,
-          }}
-        />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              /* Prevent flash of unstyled content */
-              html:not(.light):not(.dark) {
-                visibility: hidden;
-              }
-              /* Critical CSS for performance */
-              body {
-                font-family: system-ui, -apple-system, sans-serif;
-              }
-              img {
-                max-width: 100%;
-                height: auto;
-              }
-              /* Content visibility for better rendering */
-              section {
-                content-visibility: auto;
-                contain-intrinsic-size: auto 500px;
-              }
             `,
           }}
         />
