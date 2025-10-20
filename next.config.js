@@ -56,6 +56,10 @@ const nextConfig = {
         source: '/api/:path*',
         headers: [
           {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
             key: 'Cache-Control',
             value: 'no-store, no-cache, must-revalidate',
           },
@@ -65,6 +69,10 @@ const nextConfig = {
         source: '/_next/static/:path*',
         headers: [
           {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
           },
@@ -73,6 +81,10 @@ const nextConfig = {
       {
         source: '/assets/:path*',
         headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
@@ -84,5 +96,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-
