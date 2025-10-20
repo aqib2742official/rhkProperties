@@ -131,8 +131,6 @@ export function Contact() {
     try {
       // Simulate form submission - Replace with your actual API call
       await new Promise(resolve => setTimeout(resolve, 800));
-
-      // Simulate random success/error for demonstration
       const isSuccess = Math.random() > 0.2; // 80% success rate
 
       if (isSuccess) {
