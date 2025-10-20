@@ -31,8 +31,11 @@ export function Contact() {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
-        mapContainerRef.current.requestFullscreen().catch((err) => {
-          toast.error(`Error attempting to enable fullscreen: ${err.message}`);
+        mapContainerRef.current.requestFullscreen().catch(() => {
+          toast.error("Fullscreen Error", {
+            description: "Your browser doesn't support fullscreen mode or it was blocked.",
+            duration: 4000,
+          });
         });
       }
     }
@@ -116,26 +119,49 @@ export function Contact() {
     e.preventDefault();
 
     if (!validateForm()) {
-      toast.error("Please fix the errors in the form");
+      toast.error("Validation Failed", {
+        description: "Please fix the errors in the form before submitting.",
+        duration: 4000,
+      });
       return;
     }
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      // Simulate form submission - Replace with your actual API call
+      await new Promise(resolve => setTimeout(resolve, 800));
 
-    toast.success("Thank you for your inquiry! We'll get back to you soon.");
+      // Simulate random success/error for demonstration
+      const isSuccess = Math.random() > 0.2; // 80% success rate
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: ""
-    });
-    setErrors({});
-    setIsSubmitting(false);
+      if (isSuccess) {
+        toast.success("Message Sent Successfully! 🎉", {
+          description: `Thank you ${formData.name}! We've received your inquiry and will respond within 24 hours.`,
+          duration: 5000,
+        });
+
+        // Reset form on success
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: ""
+        });
+        setErrors({});
+      } else {
+        // Simulate server error
+        throw new Error("Server error");
+      }
+    } catch (error) {
+      toast.error("Failed to Send Message", {
+        description: "Something went wrong. Please try again or contact us directly at info@rhkproperties.com",
+        duration: 6000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

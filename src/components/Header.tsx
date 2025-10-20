@@ -8,6 +8,7 @@ import { useTheme } from "./ThemeProvider";
 import logoLight from "@/assets/rhk-properties.svg";
 import logoDark from "@/assets/rhk-properties-dark.svg";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,18 +36,26 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-3 relative w-[200px] h-[50px]"
           >
-            <img
-              src={logoLight.src}
+            <Image
+              src={logoLight}
               alt="RHK Properties LLC"
-              className="w-[200px] dark:hidden"
+              width={200}
+              height={50}
+              className="dark:hidden object-contain"
+              priority
+              quality={100}
               suppressHydrationWarning
             />
-            <img
-              src={logoDark.src}
+            <Image
+              src={logoDark}
               alt="RHK Properties LLC"
-              className="w-[200px] hidden dark:block"
+              width={200}
+              height={50}
+              className="hidden dark:block object-contain"
+              priority
+              quality={100}
               suppressHydrationWarning
             />
           </Link>

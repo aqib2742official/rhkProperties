@@ -102,8 +102,9 @@ export function PremiumSlider() {
               alt={slides[currentIndex].title}
               fill
               priority={currentIndex === 0}
-              quality={75}
+              quality={85}
               sizes="100vw"
+              placeholder="blur"
               className="object-cover"
             />
           </div>
