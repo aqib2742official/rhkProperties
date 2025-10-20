@@ -8,32 +8,6 @@ import officeImage from "@/assets/images/home-about-office.jpg";
 import teamPhoto from "@/assets/images/about-team-photo.jpg";
 
 export function About() {
-  // const teamMembers = [
-  //   {
-  //     name: "Mohammed Al Mansouri",
-  //     role: "CEO & Founder",
-  //     image: "https://images.unsplash.com/photo-1758518731468-98e90ffd7430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0JTIwdGVhbXxlbnwxfHx8fDE3NjA0MjYyMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-  //     bio: "15+ years of experience in luxury real estate"
-  //   },
-  //   {
-  //     name: "Sarah Johnson",
-  //     role: "Head of Sales",
-  //     image: "https://images.unsplash.com/photo-1592595896551-12b371d546d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjByZWFsJTIwZXN0YXRlJTIwYWdlbnR8ZW58MXx8fHwxNzYwNDI2MjAzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-  //     bio: "Expert in premium property transactions"
-  //   },
-  //   {
-  //     name: "Ahmed Hassan",
-  //     role: "Senior Property Consultant",
-  //     image: "https://images.unsplash.com/photo-1758518729685-f88df7890776?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBtZWV0aW5nfGVufDF8fHx8MTc2MDQwNjYxNXww&ixlib=rb-4.1.0&q=80&w=1080",
-  //     bio: "Specialized in waterfront properties"
-  //   },
-  //   {
-  //     name: "Fatima Al Zaabi",
-  //     role: "Marketing Director",
-  //     image: "https://images.unsplash.com/photo-1758518731468-98e90ffd7430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0JTIwdGVhbXxlbnwxfHx8fDE3NjA0MjYyMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-  //     bio: "Digital marketing and brand strategy expert"
-  //   }
-  // ];
 
   const platformFeatures = [
     {
