@@ -28,6 +28,7 @@ export const metadata = {
   authors: [{ name: 'RHK Properties LLC' }],
   creator: 'RHK Properties LLC',
   publisher: 'RHK Properties LLC',
+  metadataBase: new URL('https://rhkproperties.com'),
   formatDetection: {
     email: false,
     address: false,
@@ -77,6 +78,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta charSet="utf-8" />
         <meta name="theme-color" content="#FAFBFC" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0F1419" media="(prefers-color-scheme: dark)" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
