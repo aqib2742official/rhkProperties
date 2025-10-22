@@ -1,10 +1,10 @@
 # CI/CD pipeline for RHKproperties
 # Triggers on push to 'dev' branch
 
-trigger: none 
-  # branches:
-  #   include:
-  #   - dev
+trigger:  
+  branches:
+    include:
+    - deploy
 
 variables:
 - group: rhkproperties-site-dev  
