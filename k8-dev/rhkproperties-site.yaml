@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rhkproperties-site-deployment
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rhkproperties-site-deployment
+  template:
+    metadata:
+      labels:
+        app: rhkproperties-site-deployment
+    spec:
+      containers:
+        - name: rhkproperties-site-container
+          image: bohxdev-bae6adgsdyf3csef.azurecr.io/rhkproperties:latest 
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          # envFrom:
+          #   - secretRef:
+          #       name: rhkproperties-site-secret-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rhkproperties-site-service
+  namespace: dev
+spec:
+  selector:
+    app: rhkproperties-site-deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
