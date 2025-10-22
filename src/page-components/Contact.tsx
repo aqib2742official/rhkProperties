@@ -60,7 +60,7 @@ export function Contact() {
         }
         break;
       case "phone":
-        if (value.trim() && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/i.test(value)) {
+        if (value.trim() && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s./()0-9]*$/i.test(value)) {
           error = "Invalid phone number";
         }
         break;
@@ -97,7 +97,7 @@ export function Contact() {
       newErrors.email = "Invalid email address";
     }
 
-    if (formData.phone.trim() && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/i.test(formData.phone)) {
+    if (formData.phone.trim() && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s./()0-9]*$/i.test(formData.phone)) {
       newErrors.phone = "Invalid phone number";
     }
 
@@ -129,11 +129,18 @@ export function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission - Replace with your actual API call
-      await new Promise(resolve => setTimeout(resolve, 800));
-      const isSuccess = Math.random() > 0.2; // 80% success rate
+      // Send email via backend API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      if (isSuccess) {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
         toast.success("Message Sent Successfully! 🎉", {
           description: `Thank you ${formData.name}! We've received your inquiry and will respond within 24 hours.`,
           duration: 5000,
@@ -149,10 +156,10 @@ export function Contact() {
         });
         setErrors({});
       } else {
-        // Simulate server error
-        throw new Error("Server error");
+        throw new Error(data.error || "Failed to send message");
       }
     } catch (error) {
+      console.error('Contact form submission error:', error);
       toast.error("Failed to Send Message", {
         description: "Something went wrong. Please try again or contact us directly at info@rhkproperties.com",
         duration: 6000,

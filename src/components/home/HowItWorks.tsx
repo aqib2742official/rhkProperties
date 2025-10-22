@@ -7,22 +7,22 @@ export function HowItWorks() {
     {
       step: "01",
       title: "Onboard & Verify",
-      description: "Quick signup, secure identity checks, and your status tracker begins with clear milestones"
+      description: "Quick signup, secure identity checks, and your status tracker begins"
     },
     {
       step: "02",
       title: "Prepare & Publish",
-      description: "Form A, Trakheesi permit, pro media, polished listing live on our site and top portals"
+      description: "Form A, Trakheesi permit, pro media, and polished listing published"
     },
     {
       step: "03",
       title: "Engage & Negotiate",
-      description: "Unified messages and calls; punctual viewings; transparent offers with clear next steps"
+      description: "Unified messages, punctual viewings, transparent offers with next steps"
     },
     {
       step: "04",
       title: "Close & Handover",
-      description: "NOC, OA/service charges, utilities, Trustee appointment, transfer, and keys, all coordinated by us"
+      description: "NOC, utilities, Trustee appointment, transfer, and keys coordination"
     }
   ];
 
@@ -45,7 +45,7 @@ export function HowItWorks() {
           {steps.map((item, index) => (
             <motion.div
               key={index}
-              className="text-center"
+              className="text-center flex flex-col items-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -56,12 +56,12 @@ export function HowItWorks() {
                 whileHover={{ scale: 1.15 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center">
-                  <span className="text-accent text-2xl">{item.step}</span>
+                <div className="w-20 h-20 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center border-2 border-accent/30 dark:border-accent/50">
+                  <span className="text-accent dark:text-accent-foreground text-2xl font-semibold">{item.step}</span>
                 </div>
               </motion.div>
-              <h3 className="mb-3">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
+              <h3 className="mb-2 text-center">{item.title}</h3>
+              <p className="text-sm text-muted-foreground text-center w-[280px] max-w-full mx-auto line-clamp-4">{item.description}</p>
             </motion.div>
           ))}
         </div>

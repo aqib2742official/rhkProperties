@@ -281,6 +281,19 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Disable transitions during theme initialization to prevent flickering */
+html:not(.light):not(.dark) *,
+html.light.transitioning *,
+html.dark.transitioning * {
+  transition: none !important;
+}
+
+/* Prevent theme transition flicker on root elements */
+html,
+body {
+  transition: none !important;
+}
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,

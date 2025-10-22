@@ -61,17 +61,17 @@ export default function TownhousesPage() {
               {
                 icon: Home,
                 title: "Spacious Layouts",
-                description: "3-5 bedroom configurations with multiple living areas, study rooms, and flexible spaces"
+                description: "3-5 bedroom configurations with multiple living areas and flexible spaces"
               },
               {
                 icon: Users,
                 title: "Community Living",
-                description: "Family-oriented neighborhoods with parks, playgrounds, and organized community events"
+                description: "Family-oriented neighborhoods with parks, playgrounds, and community events"
               },
               {
                 icon: Trees,
                 title: "Private Gardens",
-                description: "Front and back gardens providing outdoor space for children and entertaining guests"
+                description: "Front and back gardens for outdoor space and entertaining guests"
               },
               {
                 icon: Car,
@@ -81,7 +81,7 @@ export default function TownhousesPage() {
               {
                 icon: GraduationCap,
                 title: "Top Schools",
-                description: "Proximity to prestigious international schools and nurseries"
+                description: "Proximity to prestigious international schools and nurseries nearby"
               },
               {
                 icon: Heart,
@@ -97,7 +97,7 @@ export default function TownhousesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <div className="h-12 w-12 rounded-full bg-accent/20 dark:bg-accent/40 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4">
                   <feature.icon className="h-6 w-6 text-accent dark:text-accent-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
@@ -125,8 +125,8 @@ export default function TownhousesPage() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Modern Living Features</h2>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Open-Plan Design</h3>
@@ -134,8 +134,8 @@ export default function TownhousesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Modern Kitchens</h3>
@@ -143,8 +143,8 @@ export default function TownhousesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">En-Suite Bedrooms</h3>
@@ -152,8 +152,8 @@ export default function TownhousesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Maid's Room</h3>

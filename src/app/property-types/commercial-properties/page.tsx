@@ -61,7 +61,7 @@ export default function CommercialPropertiesPage() {
               {
                 icon: Building2,
                 title: "Office Spaces",
-                description: "Grade A offices in DIFC, Business Bay, and other prime business districts with modern facilities"
+                description: "Grade A offices in DIFC, and other prime business districts with modern facilities"
               },
               {
                 icon: Briefcase,
@@ -76,7 +76,7 @@ export default function CommercialPropertiesPage() {
               {
                 icon: MapPin,
                 title: "Showrooms",
-                description: "Ground-floor retail and automotive showrooms on major highways and commercial streets"
+                description: "Retail and automotive showrooms on major highways and commercial streets"
               },
               {
                 icon: Shield,
@@ -97,7 +97,7 @@ export default function CommercialPropertiesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <div className="h-12 w-12 rounded-full bg-accent/20 dark:bg-accent/40 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4">
                   <feature.icon className="h-6 w-6 text-accent dark:text-accent-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
@@ -116,8 +116,8 @@ export default function CommercialPropertiesPage() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Premium Commercial Features</h2>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Grade A Specifications</h3>
@@ -125,8 +125,8 @@ export default function CommercialPropertiesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Advanced Technology</h3>
@@ -134,8 +134,8 @@ export default function CommercialPropertiesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Strategic Locations</h3>
@@ -143,8 +143,8 @@ export default function CommercialPropertiesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Ample Parking</h3>

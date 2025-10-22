@@ -23,7 +23,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           success: "group-[.toast]:bg-success-50 group-[.toast]:text-success-800 group-[.toast]:border-success-200 dark:group-[.toast]:bg-success-900/20 dark:group-[.toast]:text-success-300 dark:group-[.toast]:border-success-800",
           error: "group-[.toast]:bg-error-50 group-[.toast]:text-error-800 group-[.toast]:border-error-200 dark:group-[.toast]:bg-error-900/20 dark:group-[.toast]:text-error-300 dark:group-[.toast]:border-error-800",
           warning: "group-[.toast]:bg-orange-50 group-[.toast]:text-orange-800 group-[.toast]:border-orange-200 dark:group-[.toast]:bg-orange-900/20 dark:group-[.toast]:text-orange-300 dark:group-[.toast]:border-orange-800",
-          info: "group-[.toast]:bg-blue-50 group-[.toast]:text-blue-800 group-[.toast]:border-blue-200 dark:group-[.toast]:bg-blue-900/20 dark:group-[.toast]:text-blue-300 dark:group-[.toast]:border-blue-800",
+          info: "group-[.toast]:bg-accent/10 group-[.toast]:text-accent dark:group-[.toast]:bg-accent/20 dark:group-[.toast]:text-accent-foreground dark:group-[.toast]:border-accent",
         },
       }}
       style={

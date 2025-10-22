@@ -154,7 +154,7 @@ export function PremiumSlider() {
             key={index}
             onClick={() => goToSlide(index)}
             className={`h-2 rounded-full transition-all ${index === currentIndex
-              ? "bg-accent w-12"
+              ? "bg-accent w-8"
               : "bg-white/40 w-2 hover:bg-white/60"
               }`}
             whileHover={{ scale: 1.2 }}
@@ -168,9 +168,9 @@ export function PremiumSlider() {
 
       {/* Scroll Indicator - Hidden on mobile */}
       <div className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex-col items-center gap-2">
-        <span className="text-white/60 text-xs uppercase tracking-wider">Scroll</span>
+        <span className="text-white text-xs uppercase tracking-wider">Scroll</span>
         <motion.div
-          className="w-0.5 h-8 bg-white/40"
+          className="w-0.5 h-8 bg-white"
           animate={{
             scaleY: [1, 1.5, 1],
             opacity: [0.4, 0.8, 0.4]

@@ -28,10 +28,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Apply theme class and save to localStorage
   useEffect(() => {
     const root = window.document.documentElement;
+    
+    // Add transitioning class to disable transitions during theme change
+    root.classList.add('transitioning');
+    
+    // Remove old theme and add new theme
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
     root.style.colorScheme = theme;
     localStorage.setItem('theme', theme);
+    
+    // Remove transitioning class after a brief delay to re-enable transitions
+    setTimeout(() => {
+      root.classList.remove('transitioning');
+    }, 50);
   }, [theme]);
 
   const toggleTheme = () => {

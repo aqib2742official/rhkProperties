@@ -48,9 +48,9 @@ export default function PenthousesPage() {
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">The Crown of Luxury Living</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Dubai's penthouses represent the absolute pinnacle of urban luxury with expansive sky residences, 
-              breathtaking 360-degree views, private pools, and bespoke interiors. From towering above Downtown 
-              Dubai to overlooking Palm Jumeirah, our collection features the most prestigious addresses where 
+              Dubai's penthouses represent the absolute pinnacle of urban luxury with expansive sky residences,
+              breathtaking 360-degree views, private pools, and bespoke interiors. From towering above Downtown
+              Dubai to overlooking Palm Jumeirah, our collection features the most prestigious addresses where
               exclusivity meets extraordinary design.
             </p>
           </div>
@@ -61,22 +61,22 @@ export default function PenthousesPage() {
               {
                 icon: Crown,
                 title: "Ultra-Exclusive",
-                description: "Limited availability in Dubai's most iconic towers with only one or two penthouses per building"
+                description: "Limited availability in Dubai's iconic towers with ultimate privacy and prestige"
               },
               {
                 icon: Maximize,
                 title: "Expansive Spaces",
-                description: "5,000 - 20,000+ sq ft of living space across multiple levels with soaring ceiling heights"
+                description: "5,000-20,000+ sq ft across multiple levels with soaring ceiling heights"
               },
               {
                 icon: Waves,
                 title: "Private Pools",
-                description: "Infinity pools on private terraces with panoramic city, sea, or desert views"
+                description: "Infinity pools on terraces with panoramic city, sea, or desert views"
               },
               {
                 icon: Star,
                 title: "Bespoke Design",
-                description: "Custom interior design by world-renowned architects and interior designers"
+                description: "Custom interior design by world-renowned architects and designers"
               },
               {
                 icon: Wine,
@@ -86,7 +86,7 @@ export default function PenthousesPage() {
               {
                 icon: Sparkles,
                 title: "Premium Services",
-                description: "Dedicated concierge, private elevators, and exclusive access to 5-star hotel amenities"
+                description: "Dedicated concierge, private elevators, and exclusive 5-star amenities"
               }
             ].map((feature, index) => (
               <motion.div
@@ -97,7 +97,7 @@ export default function PenthousesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <div className="h-12 w-12 rounded-full bg-accent/20 dark:bg-accent/40 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4">
                   <feature.icon className="h-6 w-6 text-accent dark:text-accent-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
@@ -116,8 +116,8 @@ export default function PenthousesPage() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Unparalleled Luxury Features</h2>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Panoramic Terraces</h3>
@@ -125,8 +125,8 @@ export default function PenthousesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Private Elevators</h3>
@@ -134,8 +134,8 @@ export default function PenthousesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Master Suite Excellence</h3>
@@ -143,8 +143,8 @@ export default function PenthousesPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Advanced Technology</h3>
@@ -232,28 +232,28 @@ export default function PenthousesPage() {
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Rarity Value</h3>
                 <p className="text-sm text-muted-foreground">
-                  Limited supply of penthouse units ensures sustained demand and premium pricing. Many buildings 
-                  have only one or two penthouses, making them highly sought-after assets.
+                  Limited supply of penthouse units ensures sustained demand and premium pricing. Many buildings
+                  have limited penthouses, making them highly sought-after assets.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Prestige Premium</h3>
                 <p className="text-sm text-muted-foreground">
-                  Penthouses command significantly higher per-square-foot valuations due to their exclusivity, 
+                  Penthouses command significantly higher per-square-foot valuations due to their exclusivity,
                   views, and amenities, offering strong capital appreciation potential.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Elite Tenant Pool</h3>
                 <p className="text-sm text-muted-foreground">
-                  Attract high-net-worth individuals, executives, and celebrities willing to pay premium rents 
+                  Attract high-net-worth individuals, executives, and celebrities willing to pay premium rents
                   for the ultimate lifestyle experience and privacy.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Legacy Asset</h3>
                 <p className="text-sm text-muted-foreground">
-                  Iconic penthouses in landmark buildings become trophy assets that appreciate over decades, 
+                  Iconic penthouses in landmark buildings become trophy assets that appreciate over decades,
                   serving as legacy investments for families.
                 </p>
               </div>
@@ -263,7 +263,7 @@ export default function PenthousesPage() {
       </section>
 
       {/* CTA Section */}
-      <PropertyCTA 
+      <PropertyCTA
         title="Discover Your Sky Palace"
         description="Explore our exclusive portfolio of Dubai's most prestigious penthouses. Schedule a private viewing with our luxury property specialists"
       />

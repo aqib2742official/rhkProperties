@@ -97,7 +97,7 @@ export function FAQ() {
             transition={{ duration: 0.3 }}
             style={{ pointerEvents: 'auto' }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 dark:bg-accent/40 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 dark:bg-accent rounded-full mb-6">
               <CheckCircle className="h-5 w-5 text-accent dark:text-white" />
               <span className="text-accent dark:text-white font-semibold text-sm">Got Questions? We've Got Answers</span>
             </div>

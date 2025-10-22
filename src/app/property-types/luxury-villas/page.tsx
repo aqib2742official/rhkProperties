@@ -56,37 +56,37 @@ export default function LuxuryVillasPage() {
           </div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-16">
             {[
               {
                 icon: Home,
                 title: "Spacious Layouts",
-                description: "4-7 bedroom configurations with expansive living areas, multiple reception rooms, and dedicated family spaces"
+                description: "4-7 bedroom with living areas, multiple reception rooms, and dedicated family spaces."
               },
               {
                 icon: Sparkles,
                 title: "Premium Finishes",
-                description: "High-end materials, designer fixtures, Italian marble, and bespoke interior design options"
+                description: "High-end materials, designer fixtures, Italian marble, and interior design."
               },
               {
                 icon: Building2,
                 title: "Smart Home Tech",
-                description: "Integrated home automation systems for lighting, climate, security, and entertainment"
+                description: "Integrated home automation systems for lighting, climate, security, and entertainment."
               },
               {
                 icon: MapPin,
                 title: "Prime Locations",
-                description: "Prestigious addresses in gated communities with 24/7 security and concierge services"
+                description: "Prestigious addresses in gated communities with 24/7 security and concierge services."
               },
               {
                 icon: Shield,
                 title: "Privacy & Security",
-                description: "Gated entrances, surveillance systems, and secure perimeter walls for complete peace of mind"
+                description: "Gated entrances, surveillance systems, and secure perimeter walls for complete peace of mind."
               },
               {
                 icon: TrendingUp,
                 title: "Investment Value",
-                description: "Strong appreciation potential in Dubai's luxury real estate market with high rental yields"
+                description: "Strong appreciation potential in Dubai's luxury real estate market with high rental yields."
               }
             ].map((feature, index) => (
               <motion.div
@@ -97,7 +97,7 @@ export default function LuxuryVillasPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <div className="h-12 w-12 rounded-full bg-accent/20 dark:bg-accent/40 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4">
                   <feature.icon className="h-6 w-6 text-accent dark:text-accent-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
@@ -116,8 +116,8 @@ export default function LuxuryVillasPage() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Exceptional Villa Features</h2>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Private Swimming Pools</h3>
@@ -125,8 +125,8 @@ export default function LuxuryVillasPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Landscaped Gardens</h3>
@@ -134,8 +134,8 @@ export default function LuxuryVillasPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Staff Accommodations</h3>
@@ -143,8 +143,8 @@ export default function LuxuryVillasPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Premium Parking</h3>
@@ -179,7 +179,7 @@ export default function LuxuryVillasPage() {
             {[
               {
                 name: "Emirates Hills",
-                description: "Dubai's Beverly Hills, featuring palatial villas with golf course views and ultra-premium amenities",
+                description: "Dubai's Beverly Hills with palatial villas, golf views, and ultra-premium amenities",
                 image: villaModern.src
               },
               {
@@ -189,7 +189,7 @@ export default function LuxuryVillasPage() {
               },
               {
                 name: "Arabian Ranches",
-                description: "Family-oriented community with championship golf, excellent schools, and resort-style amenities",
+                description: "Family community with championship golf, excellent schools, and resort-style living",
                 image: villaLiving.src
               }
             ].map((location, index) => (

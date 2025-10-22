@@ -97,7 +97,7 @@ export default function PremiumApartmentsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <div className="h-12 w-12 rounded-full bg-accent/20 dark:bg-accent/40 flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4">
                   <feature.icon className="h-6 w-6 text-accent dark:text-accent-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
@@ -125,8 +125,8 @@ export default function PremiumApartmentsPage() {
               <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Exclusive Amenities</h2>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Smart Home Integration</h3>
@@ -134,8 +134,8 @@ export default function PremiumApartmentsPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Premium Kitchen & Bathrooms</h3>
@@ -143,8 +143,8 @@ export default function PremiumApartmentsPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Private Balconies</h3>
@@ -152,8 +152,8 @@ export default function PremiumApartmentsPage() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="h-2 w-2 rounded-full bg-accent"></div>
+                  <div className="flex-shrink-0 mt-2">
+                    <div className="h-2 w-2 rounded-full bg-accent dark:bg-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Covered Parking</h3>
@@ -226,28 +226,28 @@ export default function PremiumApartmentsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6 text-center">Why Invest in Dubai Apartments?</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-background p-6 rounded-lg">
+              <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">High Rental Yields</h3>
                 <p className="text-sm text-muted-foreground">
                   Dubai consistently offers rental yields of 5-8% annually, significantly higher than many global cities. 
                   Premium apartments in prime locations attract high-quality tenants year-round.
                 </p>
               </div>
-              <div className="bg-background p-6 rounded-lg">
+              <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">Capital Appreciation</h3>
                 <p className="text-sm text-muted-foreground">
                   Strategic developments and infrastructure projects continue to drive property values upward, 
                   providing strong long-term capital growth potential for investors.
                 </p>
               </div>
-              <div className="bg-background p-6 rounded-lg">
+              <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">Tax-Free Environment</h3>
                 <p className="text-sm text-muted-foreground">
                   Zero property taxes, capital gains tax, or rental income tax, allowing investors to maximize 
                   their returns and reinvest profits efficiently.
                 </p>
               </div>
-              <div className="bg-background p-6 rounded-lg">
+              <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">Golden Visa Eligibility</h3>
                 <p className="text-sm text-muted-foreground">
                   Property investments above AED 2 million qualify for UAE's 10-year Golden Visa, offering 
