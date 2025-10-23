@@ -4,7 +4,7 @@
 trigger:
   branches:
     include:
-    - deploy
+    - dev
 
 variables:
 - group: rhkproperties-site-dev  
