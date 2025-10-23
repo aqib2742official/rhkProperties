@@ -56,4 +56,4 @@ steps:
     namespace: '$(K8S_NAMESPACE)'
     command: 'apply'
     useConfigurationFile: true
-    configuration: '$(MANIFEST_PATH)'
+    configuration: '$(MANIFEST_PATH)' 
