@@ -13,7 +13,8 @@ import fabIconDark from '@/assets/favicon-white.svg';
     display: 'optional',
     preload: true,
     adjustFontFallback: true,
-    fallback: ['system-ui', '-apple-system', 'sans-serif'],
+    fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+    variable: '--font-inter',
   });
 
 export const viewport = {

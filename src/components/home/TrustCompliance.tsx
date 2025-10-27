@@ -22,7 +22,7 @@ const complianceItems = [
   }
 ];
 
-export function TrustCompliance() {
+export default function TrustCompliance() {
   return (
     <section className="py-12 md:py-16">
       <div className="container mx-auto px-4 lg:px-8">

@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 
-export function HowItWorks() {
+export default function HowItWorks() {
   const steps = [
     {
       step: "01",

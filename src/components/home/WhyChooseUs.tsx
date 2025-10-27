@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Building2, Users, TrendingUp, FileCheck } from "lucide-react";
 import officeImage from "@/assets/images/home-about-office.jpg";
 
-export function WhyChooseUs() {
+export default function WhyChooseUs() {
   return (
     <section className="py-12 md:py-16 bg-secondary">
       <div className="container mx-auto px-4 lg:px-8">

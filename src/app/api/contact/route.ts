@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
         // Email content for you (the website owner)
         const mailOptions = {
             from: `"RHK Properties" <${process.env.EMAIL_USER}>`,
-            to: 'maqibali2742@gmail.com',
+            to: 'info@rhkproperties.com',
             replyTo: email,
             subject: `🏢 New Contact Inquiry: ${subject}`,
             html: `

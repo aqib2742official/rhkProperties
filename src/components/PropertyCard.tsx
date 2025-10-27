@@ -8,9 +8,10 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 interface PropertyCardProps {
   property: Property;
+  priority?: boolean;
 }
 
-export function PropertyCard({ property }: PropertyCardProps) {
+export function PropertyCard({ property, priority = false }: PropertyCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -27,6 +28,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
               src={property.image}
               alt={property.title}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              priority={priority}
+              quality={priority ? 85 : 75}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="absolute top-3 left-3 flex gap-2 z-10">
