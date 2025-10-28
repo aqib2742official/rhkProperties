@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import path from 'path';
+import { generateContactEmailHTML, generateContactEmailText } from './emailTemplate';
 
 // Environment variables validation
 const validateEnvVariables = () => {
@@ -65,237 +67,32 @@ export async function POST(request: NextRequest) {
         // Verify transporter configuration
         await transporter.verify();
 
+        // Generate email template data
+        const emailTemplateData = {
+            sanitizedName,
+            email,
+            sanitizedPhone,
+            sanitizedSubject,
+            sanitizedMessage
+        };
+
         // Email content for the recipient
         const mailOptions = {
             from: `"RHK Properties" <${process.env.EMAIL_USER}>`,
             to: process.env.RECIPIENT_EMAIL,
             replyTo: email,
             subject: `🏢 New Contact Inquiry: ${sanitizedSubject}`,
-            html: `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Contact Form Submission</title>
-</head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f4f4f5; line-height: 1.6;">
-    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f5;">
-        <tr>
-            <td align="center" style="padding: 40px 20px;">
-                <!-- Main Container -->
-                <table role="presentation" style="width: 100%; max-width: 600px; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
-                    
-                    <!-- Header -->
-                    <tr>
-                        <td style="background: linear-gradient(135deg, #161950 0%, #1E2370 100%); padding: 40px 30px; text-align: center;">
-                            <h1 style="margin: 0; text-align:center;">
-  <div
-    style="
-      width:200px;
-      height:60px;
-      margin:0 auto;
-      background:url('${process.env.BASE_URL || 'https://rhkproperties.vercel.app'}/logo.png') no-repeat center center;
-      background-size:contain;
-      line-height:60px;
-      color:#ffffff;
-      font-weight:700;
-      font-size:24px;
-    "
-  >
-    RHK Properties
-  </div>
-</h1>
-
-                            <p style="margin: 10px 0 0 0; color: rgba(255, 255, 255, 0.9); font-size: 14px; font-weight: 500;">
-                                New Contact Form Submission
-                            </p>
-                        </td>
-                    </tr>
-
-                    <!-- Alert Banner -->
-                    <tr>
-                        <td style="background-color: #FEF3C7; padding: 16px 30px; border-left: 4px solid #F59E0B;">
-                            <p style="margin: 0; color: #92400E; font-size: 14px; font-weight: 600;">
-                                ⚡ Action Required: New inquiry received
-                            </p>
-                        </td>
-                    </tr>
-
-                    <!-- Contact Information Section -->
-                    <tr>
-                        <td style="padding: 30px;">
-                            <h2 style="margin: 0 0 20px 0; color: #161950; font-size: 20px; font-weight: 700;">
-                                Contact Details
-                            </h2>
-                            
-                            <table role="presentation" style="width: 100%; border-collapse: collapse;">
-                                <tr>
-                                    <td style="padding: 12px; background-color: #F9FAFB; border-radius: 8px; margin-bottom: 8px;">
-                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
-                                            <tr>
-                                                <td style="width: 30px; vertical-align: top;">
-                                                    <span style="font-size: 20px;">👤</span>
-                                                </td>
-                                                <td style="vertical-align: top;">
-                                                    <p style="margin: 0; font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Full Name</p>
-                                                    <p style="margin: 4px 0 0 0; font-size: 16px; color: #111827; font-weight: 600;">${sanitizedName}</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr><td style="height: 8px;"></td></tr>
-                                <tr>
-                                    <td style="padding: 12px; background-color: #F9FAFB; border-radius: 8px;">
-                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
-                                            <tr>
-                                                <td style="width: 30px; vertical-align: top;">
-                                                    <span style="font-size: 20px;">📧</span>
-                                                </td>
-                                                <td style="vertical-align: top;">
-                                                    <p style="margin: 0; font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Email Address</p>
-                                                    <p style="margin: 4px 0 0 0; font-size: 16px;">
-                                                        <a href="mailto:${email}" style="color: #161950; text-decoration: none; font-weight: 600;">${email}</a>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                ${sanitizedPhone ? `
-                                <tr><td style="height: 8px;"></td></tr>
-                                <tr>
-                                    <td style="padding: 12px; background-color: #F9FAFB; border-radius: 8px;">
-                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
-                                            <tr>
-                                                <td style="width: 30px; vertical-align: top;">
-                                                    <span style="font-size: 20px;">📱</span>
-                                                </td>
-                                                <td style="vertical-align: top;">
-                                                    <p style="margin: 0; font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Phone Number</p>
-                                                    <p style="margin: 4px 0 0 0; font-size: 16px;">
-                                                        <a href="tel:${sanitizedPhone}" style="color: #161950; text-decoration: none; font-weight: 600;">${sanitizedPhone}</a>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                ` : ''}
-                                <tr><td style="height: 8px;"></td></tr>
-                                <tr>
-                                    <td style="padding: 12px; background-color: #F9FAFB; border-radius: 8px;">
-                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
-                                            <tr>
-                                                <td style="width: 30px; vertical-align: top;">
-                                                    <span style="font-size: 20px;">📋</span>
-                                                </td>
-                                                <td style="vertical-align: top;">
-                                                    <p style="margin: 0; font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Subject</p>
-                                                    <p style="margin: 4px 0 0 0; font-size: 16px; color: #111827; font-weight: 600;">${sanitizedSubject}</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                    <!-- Message Section -->
-                    <tr>
-                        <td style="padding: 0 30px 30px 30px;">
-                            <div style="background-color: #F9FAFB; border-left: 4px solid #161950; padding: 20px; border-radius: 8px;">
-                                <h3 style="margin: 0 0 12px 0; color: #161950; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
-                                    💬 Message
-                                </h3>
-                                <p style="margin: 0; color: #374151; font-size: 15px; line-height: 1.7; white-space: pre-wrap;">${sanitizedMessage}</p>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <!-- Action Button -->
-                    <tr>
-                        <td style="padding: 0 30px 30px 30px;" align="center">
-                            <a href="mailto:${email}?subject=Re: ${encodeURIComponent(sanitizedSubject)}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #161950 0%, #1E2370 100%); color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 6px rgba(22, 25, 80, 0.2);">
-                                📧 Reply to ${sanitizedName.split(' ')[0]}
-                            </a>
-                        </td>
-                    </tr>
-
-                    <!-- Metadata Section -->
-                    <tr>
-                        <td style="padding: 20px 30px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
-                            <table role="presentation" style="width: 100%; border-collapse: collapse;">
-                                <tr>
-                                    <td style="font-size: 12px; color: #6B7280;">
-                                        <p style="margin: 0 0 4px 0;"><strong>📅 Received:</strong> ${new Date().toLocaleString('en-US', {
-                timeZone: 'Asia/Dubai',
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZoneName: 'short'
-            })}</p>
-                                        <p style="margin: 4px 0 0 0;"><strong>🌐 Source:</strong> RHK Properties Contact Form</p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                    <!-- Footer -->
-                    <tr>
-                        <td style="padding: 30px; background: linear-gradient(135deg, #161950 0%, #1E2370 100%); text-align: center;">
-                            <p style="margin: 0 0 8px 0; color: rgba(255, 255, 255, 0.9); font-size: 14px; font-weight: 600;">
-                                RHK Properties LLC
-                            </p>
-                            <p style="margin: 0 0 12px 0; color: rgba(255, 255, 255, 0.7); font-size: 12px; line-height: 1.6;">
-                                Office 2304 Prime Tower, Burj Khalifa Blvd<br>
-                                Business Bay, Dubai, UAE<br>
-                                📞 +971 4 589 0333 | 📧 info@rhkproperties.com
-                            </p>
-                            <p style="margin: 0; color: rgba(255, 255, 255, 0.5); font-size: 11px;">
-                                © ${new Date().getFullYear()} RHK Properties. All rights reserved.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <!-- Email Client Notice -->
-                <table role="presentation" style="width: 100%; max-width: 600px; margin-top: 20px;">
-                    <tr>
-                        <td style="text-align: center; padding: 0 20px;">
-                            <p style="margin: 0; color: #9CA3AF; font-size: 12px; line-height: 1.5;">
-                                This is an automated notification from your website contact form.<br>
-                                To stop receiving these notifications, update your email settings.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-</body>
-</html>
-      `,
-            text: `
-New Contact Form Submission
-
-Name: ${sanitizedName}
-Email: ${email}
-Phone: ${sanitizedPhone || 'Not provided'}
-Subject: ${sanitizedSubject}
-
-Message:
-${sanitizedMessage}
-
----
-Submitted on: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}
-      `,
+            html: generateContactEmailHTML(emailTemplateData),
+            text: generateContactEmailText(emailTemplateData),
+            attachments: [
+                {
+                    filename: 'logo.png',
+                    path: path.join(process.cwd(), 'public', 'logo.png'),
+                    cid: 'logo', // Must match src="cid:logo" in HTML
+                    contentDisposition: 'inline' as const,
+                    contentType: 'image/png'
+                }
+            ]
         };
 
         // Send email
@@ -317,4 +114,3 @@ Submitted on: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}
         );
     }
 }
-
