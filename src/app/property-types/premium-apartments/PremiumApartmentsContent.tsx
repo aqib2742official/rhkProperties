@@ -48,9 +48,9 @@ export default function PremiumApartmentsContent() {
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Contemporary Apartment Living</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Dubai's premium apartment market offers exceptional living experiences in the city's most dynamic 
-              neighborhoods. From Downtown Dubai to Dubai Marina, our curated selection features high-rise 
-              residences with cutting-edge design, five-star amenities, and unparalleled convenience for 
+              Dubai's premium apartment market offers exceptional living experiences in the city's most dynamic
+              neighborhoods. From Downtown Dubai to Dubai Marina, our curated selection features high-rise
+              residences with cutting-edge design, five-star amenities, and unparalleled convenience for
               modern professionals, families, and investors.
             </p>
           </div>
@@ -229,28 +229,26 @@ export default function PremiumApartmentsContent() {
               <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">High Rental Yields</h3>
                 <p className="text-sm text-muted-foreground">
-                  Dubai consistently offers rental yields of 5-8% annually, significantly higher than many global cities. 
-                  Premium apartments in prime locations attract high-quality tenants year-round.
+                  Dubai offers rental yields of 5–8% annually, higher than most global cities. Premium apartments in prime locations attract quality tenants year-round.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">Capital Appreciation</h3>
                 <p className="text-sm text-muted-foreground">
-                  Strategic developments and infrastructure projects continue to drive property values upward, 
-                  providing strong long-term capital growth potential for investors.
+                  Strategic developments and infrastructure projects drive property values upward, providing strong long-term capital growth potential for investors.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">Tax-Free Environment</h3>
                 <p className="text-sm text-muted-foreground">
-                  Zero property taxes, capital gains tax, or rental income tax, allowing investors to maximize 
+                  Zero property taxes, capital gains tax, or rental income tax, allowing investors to maximize
                   their returns and reinvest profits efficiently.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg max-w-[600px]">
                 <h3 className="text-lg font-semibold mb-3">Golden Visa Eligibility</h3>
                 <p className="text-sm text-muted-foreground">
-                  Property investments above AED 2 million qualify for UAE's 10-year Golden Visa, offering 
+                  Property investments above AED 2 million qualify for UAE's 10-year Golden Visa, offering
                   long-term residency for you and your family.
                 </p>
               </div>
@@ -260,7 +258,7 @@ export default function PremiumApartmentsContent() {
       </section>
 
       {/* CTA Section */}
-      <PropertyCTA 
+      <PropertyCTA
         title="Find Your Perfect Apartment"
         description="Explore our exclusive portfolio of premium apartments and discover the ideal home or investment opportunity"
       />

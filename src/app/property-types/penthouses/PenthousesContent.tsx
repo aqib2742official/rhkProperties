@@ -232,15 +232,13 @@ export default function PenthousesContent() {
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Rarity Value</h3>
                 <p className="text-sm text-muted-foreground">
-                  Limited supply of penthouse units ensures sustained demand and premium pricing. Many buildings
-                  have limited penthouses, making them highly sought-after assets.
+                  Limited penthouse supply ensures strong demand and premium pricing. Few buildings offer them, making them highly sought-after assets.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Prestige Premium</h3>
                 <p className="text-sm text-muted-foreground">
-                  Penthouses command significantly higher per-square-foot valuations due to their exclusivity,
-                  views, and amenities, offering strong capital appreciation potential.
+                  Penthouses command higher valuations due to their exclusivity, views, and amenities, offering strong capital appreciation potential.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">

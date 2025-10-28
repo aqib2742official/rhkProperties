@@ -21,9 +21,7 @@ export default function MissionVisionSection() {
             </div>
             <h2 className="mb-4 text-xl md:text-2xl lg:text-3xl">Our Mission</h2>
             <p className="text-muted-foreground">
-              We standardize the property journey end-to-end by combining transparent workflows, fast communication, and rigorous compliance.
-              Our mission is to remove uncertainty at each milestone (onboarding, permits, media, viewings, offers, closing), empower agents with excellent tools,
-              and give clients the real-time clarity they deserve for every transaction, every time.
+              We standardize the property journey end-to-end with transparent workflows, fast communication, and strong compliance. Our mission is to remove uncertainty at every milestone, empower agents with better tools, and give clients the real-time clarity they deserve on every transaction.
             </p>
           </motion.div>
           <motion.div

@@ -1,43 +1,76 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Environment variables validation
+const validateEnvVariables = () => {
+    const required = ['EMAIL_USER', 'EMAIL_PASSWORD', 'RECIPIENT_EMAIL'];
+    const missing = required.filter(key => !process.env[key]);
+    
+    if (missing.length > 0) {
+        throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    }
+};
+
+// Email validation helper
+const isValidEmail = (email: string): boolean => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(email);
+};
+
+// Sanitize input to prevent injection attacks
+const sanitizeInput = (input: string): string => {
+    return input.trim().replace(/[<>]/g, '');
+};
+
 export async function POST(request: NextRequest) {
     try {
+        // Validate environment variables
+        validateEnvVariables();
+
+        // Parse request body
         const body = await request.json();
         const { name, email, phone, subject, message } = body;
 
         // Validate required fields
         if (!name || !email || !subject || !message) {
             return NextResponse.json(
-                { error: 'Missing required fields' },
+                { success: false, error: 'Missing required fields' },
                 { status: 400 }
             );
         }
 
-        // Email validation
-        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-        if (!emailRegex.test(email)) {
+        // Validate email format
+        if (!isValidEmail(email)) {
             return NextResponse.json(
-                { error: 'Invalid email address' },
+                { success: false, error: 'Invalid email address' },
                 { status: 400 }
             );
         }
+
+        // Sanitize inputs
+        const sanitizedName = sanitizeInput(name);
+        const sanitizedSubject = sanitizeInput(subject);
+        const sanitizedMessage = sanitizeInput(message);
+        const sanitizedPhone = phone ? sanitizeInput(phone) : '';
 
         // Create nodemailer transporter using Gmail SMTP
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: process.env.EMAIL_USER, // Your Gmail address
-                pass: process.env.EMAIL_PASSWORD, // Your Gmail App Password
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASSWORD,
             },
         });
 
-        // Email content for you (the website owner)
+        // Verify transporter configuration
+        await transporter.verify();
+
+        // Email content for the recipient
         const mailOptions = {
             from: `"RHK Properties" <${process.env.EMAIL_USER}>`,
-            to: 'info@rhkproperties.com',
+            to: process.env.RECIPIENT_EMAIL,
             replyTo: email,
-            subject: `🏢 New Contact Inquiry: ${subject}`,
+            subject: `🏢 New Contact Inquiry: ${sanitizedSubject}`,
             html: `
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +124,7 @@ export async function POST(request: NextRequest) {
                                                 </td>
                                                 <td style="vertical-align: top;">
                                                     <p style="margin: 0; font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Full Name</p>
-                                                    <p style="margin: 4px 0 0 0; font-size: 16px; color: #111827; font-weight: 600;">${name}</p>
+                                                    <p style="margin: 4px 0 0 0; font-size: 16px; color: #111827; font-weight: 600;">${sanitizedName}</p>
                                                 </td>
                                             </tr>
                                         </table>
@@ -115,7 +148,7 @@ export async function POST(request: NextRequest) {
                                         </table>
                                     </td>
                                 </tr>
-                                ${phone ? `
+                                ${sanitizedPhone ? `
                                 <tr><td style="height: 8px;"></td></tr>
                                 <tr>
                                     <td style="padding: 12px; background-color: #F9FAFB; border-radius: 8px;">
@@ -127,7 +160,7 @@ export async function POST(request: NextRequest) {
                                                 <td style="vertical-align: top;">
                                                     <p style="margin: 0; font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Phone Number</p>
                                                     <p style="margin: 4px 0 0 0; font-size: 16px;">
-                                                        <a href="tel:${phone}" style="color: #161950; text-decoration: none; font-weight: 600;">${phone}</a>
+                                                        <a href="tel:${sanitizedPhone}" style="color: #161950; text-decoration: none; font-weight: 600;">${sanitizedPhone}</a>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -145,7 +178,7 @@ export async function POST(request: NextRequest) {
                                                 </td>
                                                 <td style="vertical-align: top;">
                                                     <p style="margin: 0; font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Subject</p>
-                                                    <p style="margin: 4px 0 0 0; font-size: 16px; color: #111827; font-weight: 600;">${subject}</p>
+                                                    <p style="margin: 4px 0 0 0; font-size: 16px; color: #111827; font-weight: 600;">${sanitizedSubject}</p>
                                                 </td>
                                             </tr>
                                         </table>
@@ -162,7 +195,7 @@ export async function POST(request: NextRequest) {
                                 <h3 style="margin: 0 0 12px 0; color: #161950; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
                                     💬 Message
                                 </h3>
-                                <p style="margin: 0; color: #374151; font-size: 15px; line-height: 1.7; white-space: pre-wrap;">${message}</p>
+                                <p style="margin: 0; color: #374151; font-size: 15px; line-height: 1.7; white-space: pre-wrap;">${sanitizedMessage}</p>
                             </div>
                         </td>
                     </tr>
@@ -170,8 +203,8 @@ export async function POST(request: NextRequest) {
                     <!-- Action Button -->
                     <tr>
                         <td style="padding: 0 30px 30px 30px;" align="center">
-                            <a href="mailto:${email}?subject=Re: ${encodeURIComponent(subject)}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #161950 0%, #1E2370 100%); color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 6px rgba(22, 25, 80, 0.2);">
-                                📧 Reply to ${name.split(' ')[0]}
+                            <a href="mailto:${email}?subject=Re: ${encodeURIComponent(sanitizedSubject)}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #161950 0%, #1E2370 100%); color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 6px rgba(22, 25, 80, 0.2);">
+                                📧 Reply to ${sanitizedName.split(' ')[0]}
                             </a>
                         </td>
                     </tr>
@@ -237,13 +270,13 @@ export async function POST(request: NextRequest) {
             text: `
 New Contact Form Submission
 
-Name: ${name}
+Name: ${sanitizedName}
 Email: ${email}
-Phone: ${phone || 'Not provided'}
-Subject: ${subject}
+Phone: ${sanitizedPhone || 'Not provided'}
+Subject: ${sanitizedSubject}
 
 Message:
-${message}
+${sanitizedMessage}
 
 ---
 Submitted on: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}

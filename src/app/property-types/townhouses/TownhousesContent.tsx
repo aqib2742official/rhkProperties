@@ -48,9 +48,9 @@ export default function TownhousesContent() {
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Family-Focused Living</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Dubai's townhouse communities offer the ideal lifestyle for growing families, combining the space and 
-              privacy of a villa with the convenience and amenities of community living. From award-winning schools 
-              to landscaped parks and recreational facilities, these master-planned communities provide everything 
+              Dubai's townhouse communities offer the ideal lifestyle for growing families, combining the space and
+              privacy of a villa with the convenience and amenities of community living. From award-winning schools
+              to landscaped parks and recreational facilities, these master-planned communities provide everything
               your family needs within walking distance.
             </p>
           </div>
@@ -232,28 +232,25 @@ export default function TownhousesContent() {
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Sports & Recreation</h3>
                 <p className="text-sm text-muted-foreground">
-                  Swimming pools, tennis courts, basketball courts, jogging tracks, and cycling paths throughout 
-                  the community. Many developments include fitness centers and sports clubs.
-                </p>
+                  Swimming pools, tennis courts, jogging tracks, and cycling paths across the community. Many developments include fitness centers and sports clubs.                </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Children's Facilities</h3>
                 <p className="text-sm text-muted-foreground">
-                  Age-appropriate playgrounds, splash pads, and safe play areas. Organized activities and summer 
+                  Age-appropriate playgrounds, splash pads, and safe play areas. Organized activities and summer
                   camps keep children engaged and active.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Retail & Dining</h3>
                 <p className="text-sm text-muted-foreground">
-                  On-site retail centers with supermarkets, caf├®s, restaurants, and essential services. Many 
-                  communities feature weekly markets and food festivals.
+                  On-site retail centers with supermarkets, cafés, restaurants, and essential services; many communities also host weekly markets and food festivals.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Green Spaces</h3>
                 <p className="text-sm text-muted-foreground">
-                  Landscaped parks, community gardens, BBQ areas, and outdoor seating. Pet-friendly zones and 
+                  Landscaped parks, community gardens, BBQ areas, and outdoor seating. Pet-friendly zones and
                   walking trails create a true suburban lifestyle.
                 </p>
               </div>
@@ -268,9 +265,9 @@ export default function TownhousesContent() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl lg:text-4xl mb-6">Why Invest in Townhouses?</h2>
             <p className="text-muted-foreground mb-8">
-              Townhouses offer excellent value propositions for both end-users and investors. With lower price 
-              points than villas but more space than apartments, they attract a broad tenant demographic including 
-              families, professionals, and small businesses. Strong rental demand in family communities ensures 
+              Townhouses offer excellent value propositions for both end-users and investors. With lower price
+              points than villas but more space than apartments, they attract a broad tenant demographic including
+              families, professionals, and small businesses. Strong rental demand in family communities ensures
               consistent yields of 5-7% annually, while community developments continue to mature and appreciate.
             </p>
             <div className="grid md:grid-cols-3 gap-6 text-center">
@@ -292,7 +289,7 @@ export default function TownhousesContent() {
       </section>
 
       {/* CTA Section */}
-      <PropertyCTA 
+      <PropertyCTA
         title="Find Your Family Home"
         description="Discover the perfect townhouse for your family in Dubai's best communities. Contact our team for personalized recommendations"
       />
