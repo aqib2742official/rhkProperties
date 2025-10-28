@@ -24,33 +24,11 @@ const sanitizeInput = (input: string): string => {
 
 export async function POST(request: NextRequest) {
     try {
-        // Validate environment variables first
-        try {
-            validateEnvVariables();
-        } catch (envError) {
-            console.error('Environment variable validation failed:', envError);
-            return NextResponse.json(
-                { 
-                    success: false, 
-                    error: 'Server configuration error. Please contact support.',
-                    debug: process.env.NODE_ENV === 'development' ? (envError as Error).message : undefined
-                },
-                { status: 500 }
-            );
-        }
+        // Validate environment variables
+        validateEnvVariables();
 
         // Parse request body
-        let body;
-        try {
-            body = await request.json();
-        } catch (parseError) {
-            console.error('JSON parse error:', parseError);
-            return NextResponse.json(
-                { success: false, error: 'Invalid request format' },
-                { status: 400 }
-            );
-        }
-
+        const body = await request.json();
         const { name, email, phone, subject, message } = body;
 
         // Validate required fields
@@ -85,20 +63,7 @@ export async function POST(request: NextRequest) {
         });
 
         // Verify transporter configuration
-        try {
-            await transporter.verify();
-            console.log('Email transporter verified successfully');
-        } catch (verifyError) {
-            console.error('Email transporter verification failed:', verifyError);
-            return NextResponse.json(
-                { 
-                    success: false, 
-                    error: 'Email service configuration error. Please try again later.',
-                    debug: process.env.NODE_ENV === 'development' ? (verifyError as Error).message : undefined
-                },
-                { status: 500 }
-            );
-        }
+        await transporter.verify();
 
         // Email content for the recipient
         const mailOptions = {
@@ -334,34 +299,19 @@ Submitted on: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}
         };
 
         // Send email
-        try {
-            const info = await transporter.sendMail(mailOptions);
-            console.log('Email sent successfully:', info.messageId);
-            
-            return NextResponse.json({
-                success: true,
-                message: 'Message sent successfully',
-            });
-        } catch (sendError) {
-            console.error('Email send error:', sendError);
-            return NextResponse.json(
-                {
-                    success: false,
-                    error: 'Failed to send email. Please try again later.',
-                    debug: process.env.NODE_ENV === 'development' ? (sendError as Error).message : undefined
-                },
-                { status: 500 }
-            );
-        }
+        await transporter.sendMail(mailOptions);
+
+        return NextResponse.json({
+            success: true,
+            message: 'Message sent successfully',
+        });
 
     } catch (error) {
-        // Catch-all for any unexpected errors
-        console.error('Unexpected contact form error:', error);
+        console.error('Contact form error:', error);
         return NextResponse.json(
             {
-                success: false,
-                error: 'An unexpected error occurred. Please try again later.',
-                debug: process.env.NODE_ENV === 'development' && error instanceof Error ? error.message : undefined
+                error: 'Failed to send message',
+                details: error instanceof Error ? error.message : 'Unknown error'
             },
             { status: 500 }
         );
