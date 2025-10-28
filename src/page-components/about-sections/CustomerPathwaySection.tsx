@@ -4,12 +4,12 @@ import { motion } from "motion/react";
 
 export default function CustomerPathwaySection() {
   const customerPathway = [
-    { step: "01", title: "Discover", description: "Start with a consultation or browse our curated portfolio; we map your must-haves, timeline, and budget" },
-    { step: "02", title: "Verify & Prepare", description: "We streamline onboarding and documents so viewings and offers move quickly and confidently" },
-    { step: "03", title: "Experience", description: "Tour properties with accurate media and details; compare options using real market context" },
-    { step: "04", title: "Decide", description: "Make an offer with transparent terms; we manage bilingual contracts and e-signing" },
-    { step: "05", title: "Close", description: "We orchestrate clearances, NOC, Trustee appointment, and transfer" },
-    { step: "06", title: "Handover", description: "Keys, checklists, and a smooth move-in. Your documents remain securely accessible for future reference" }
+    { step: "01", title: "Discover", description: "Start with a consultation or browse our portfolio. We map your must-haves, timeline, and budget." },
+    { step: "02", title: "Verify & Prepare", description: "We streamline onboarding and documents so viewings and offers move quickly and confidently." },
+    { step: "03", title: "Experience", description: "Tour properties with accurate media and details. Compare options using real market context." },
+    { step: "04", title: "Decide", description: "Make an offer with transparent terms. We manage bilingual contracts and e-signing." },
+    { step: "05", title: "Close", description: "We efficiently orchestrate clearances, NOC, Trustee appointment, and property transfer." },
+    { step: "06", title: "Handover", description: "Keys, checklists, and a smooth move-in. Documents stay securely accessible for future reference." }
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function CustomerPathwaySection() {
         >
           <h2 className="mb-4 text-2xl md:text-3xl lg:text-4xl">Customer Pathway</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            From discovery to handover, a transparent journey designed for your confidence
+            From discovery to handover, a transparent journey designed for your confidence.
           </p>
         </motion.div>
         <div className="relative max-w-4xl mx-auto">

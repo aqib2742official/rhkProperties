@@ -232,15 +232,14 @@ export default function CommercialPropertiesContent() {
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">High Rental Yields</h3>
                 <p className="text-sm text-muted-foreground">
-                  Commercial properties in Dubai offer rental yields of 7-10%, significantly higher than residential
-                  real estate. Prime office locations command premium rents from multinational corporations.
+                  Commercial properties in Dubai offer rental yields of 7-10%, higher than residential real estate.
+                  Prime office locations command premium rents from multinationals.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Long-Term Tenancies</h3>
                 <p className="text-sm text-muted-foreground">
-                  Corporate tenants typically sign 3-5 year leases, providing predictable cash flow and reducing
-                  vacancy periods. Many agreements include annual rent increases.
+                  Corporate tenants typically sign 3–5 year leases, providing predictable cash flow and reducing vacancies. Many agreements include annual rent increases.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
@@ -253,8 +252,7 @@ export default function CommercialPropertiesContent() {
               <div className="bg-background p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-3">Business-Friendly Environment</h3>
                 <p className="text-sm text-muted-foreground">
-                  100% foreign ownership, zero corporate taxes in free zones, and streamlined business setup
-                  processes attract global enterprises, driving commercial property demand.
+                  100% foreign ownership, zero corporate tax in free zones, and streamlined business setup attract global enterprises, driving commercial property demand.
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg">
@@ -293,22 +291,22 @@ export default function CommercialPropertiesContent() {
               <div className="border-l-4 border-accent pl-6 py-2">
                 <h3 className="text-xl font-semibold mb-2">Retail Investments</h3>
                 <p className="text-muted-foreground">
-                  High-street retail units, mall kiosks, and standalone shops in prime locations. Food & beverage,
-                  fashion, and lifestyle retail opportunities in established and emerging neighborhoods.
+                  High-street retail units, mall kiosks, and standalone shops in prime, high-traffic locations.
+                  Food & beverage, fashion, and lifestyle retail opportunities in both established and rapidly emerging neighborhoods.
                 </p>
               </div>
               <div className="border-l-4 border-accent pl-6 py-2">
                 <h3 className="text-xl font-semibold mb-2">Industrial & Warehousing</h3>
                 <p className="text-muted-foreground">
-                  Modern warehouses and logistics facilities in Dubai's free zones. Temperature-controlled storage,
-                  distribution centers, and light industrial units with excellent highway connectivity.
+                  Modern warehouses and logistics facilities in Dubai's key free zones. Temperature-controlled storage, advanced distribution centers,
+                  and light industrial units with excellent highway connectivity.
                 </p>
               </div>
               <div className="border-l-4 border-accent pl-6 py-2">
                 <h3 className="text-xl font-semibold mb-2">Hospitality Assets</h3>
                 <p className="text-muted-foreground">
-                  Hotel apartments, boutique hotels, and serviced residences in tourist and business districts.
-                  Managed investment options with guaranteed returns available.
+                  Hotel apartments, boutique hotels, and serviced residences in major tourist and business districts.
+                  Professionally managed investment options with attractive, guaranteed returns and long-term growth potential available.
                 </p>
               </div>
             </div>
