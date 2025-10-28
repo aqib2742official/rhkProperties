@@ -1,6 +1,6 @@
 'use client';
 
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import logoLight from "@/assets/rhk-properties-dark.svg";
 
@@ -26,7 +26,7 @@ export function Footer() {
             <p className="text-sm text-white/80 mb-4">
               Your trusted partner for luxury real estate in the UAE, delivering clear process, quality presentation, and a premium client experience.
             </p>
-            <div className="flex space-x-3">
+            {/* <div className="flex space-x-3">
               <a
                 href="https://facebook.com/rhkproperties"
                 target="_blank"
@@ -63,7 +63,7 @@ export function Footer() {
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
