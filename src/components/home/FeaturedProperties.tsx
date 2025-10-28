@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { PropertyCard } from "../PropertyCard";
 import { properties } from "../../data/properties";
 
-export function FeaturedProperties() {
+export default function FeaturedProperties() {
   const featuredProperties = properties.filter(p => p.status === "Available").slice(0, 4);
 
   return (
@@ -25,10 +25,11 @@ export function FeaturedProperties() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 auto-rows-fr">
-          {featuredProperties.map((property) => (
+          {featuredProperties.map((property, index) => (
             <PropertyCard
               key={property.id}
               property={property}
+              priority={index < 2}
             />
           ))}
         </div>

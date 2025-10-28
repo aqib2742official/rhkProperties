@@ -1,0 +1,183 @@
+# CI/CD pipeline for RHKproperties
+# Triggers on push to 'dev' branch
+
+trigger:
+  branches:
+    include:
+    - dev
+
+variables:
+- group: rhkproperties-site-dev  
+
+pool:
+  name: 'Self-Hosted-Runner-BOH-Dev'
+
+steps:
+- checkout: self
+
+- script: |
+    echo "Setting IMAGE_TAG to commit SHA: $(Build.SourceVersion)"
+    echo "##vso[task.setvariable variable=IMAGE_TAG]$(Build.SourceVersion)"
+  displayName: 'Set IMAGE_TAG dynamically to Commit SHA'
+
+- task: Docker@2
+  displayName: 'Build and push Docker image'
+  inputs:
+    containerRegistry: 'Azure-ACR-BOH-Dev'
+    repository: '$(IMAGE_NAME)'
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
+    tags: |
+      $(IMAGE_TAG)
+
+- script: |
+    echo "Updating manifest: $(MANIFEST_PATH)"
+    echo "New image: $(AZURE_CONTAINER_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG)"
+    sed -i "s|image: .*|image: $(AZURE_CONTAINER_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG)|g" "$(MANIFEST_PATH)"
+  displayName: 'Update Kubernetes manifest'
+
+- task: Kubernetes@1
+  displayName: 'Kube login (dev)'
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: 'Azure-AKS-BOH-dev'
+    azureResourceGroup: '$(RESOURCE_GROUP)'
+    kubernetesCluster: '$(CLUSTER_NAME)'
+    namespace: '$(K8S_NAMESPACE)'
+    command: 'login'
+
+- task: Kubernetes@1
+  displayName: 'Deploy to AKS'
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: 'Azure-AKS-BOH-dev'
+    azureResourceGroup: '$(RESOURCE_GROUP)'
+    kubernetesCluster: '$(CLUSTER_NAME)'
+    namespace: '$(K8S_NAMESPACE)'
+    command: 'apply'
+    useConfigurationFile: true
+    configuration: '$(MANIFEST_PATH)' 
+
+- script: |
+    set -e
+
+    WEBHOOK_URL='$(TEAMS_WEBHOOK)'
+    DEPLOYMENT_URL='$(DEPLOYMENT_URL)'
+
+    ORG_URI="$(System.TeamFoundationCollectionUri)"
+    RUN_ID="$(Build.BuildId)"
+    JOB_GUID="$(System.JobId)"
+    PROJ_NAME="$(System.TeamProject)"
+    PROJ_ID="$(System.TeamProjectId)"
+
+    # Encode project path segment (spaces / parens)
+    PROJECT_PATH="${PROJ_NAME// /%20}"
+    PROJECT_PATH="${PROJECT_PATH//(/%28}"
+    PROJECT_PATH="${PROJECT_PATH//)/%29}"
+
+    BUILD_URL="${ORG_URI%/}/${PROJECT_PATH}/_build/results?buildId=${RUN_ID}&view=logs&j=${JOB_GUID}&projectId=${PROJ_ID}"
+    echo "Build link -> ${BUILD_URL}"
+
+    REPO="${BUILD_REPOSITORY_NAME}"
+    BRANCH="${BUILD_SOURCEBRANCHNAME}"
+    COMMIT="$(echo "${BUILD_SOURCEVERSION}" | cut -c1-7)"
+
+    jq -n \
+      --arg repo   "$REPO" \
+      --arg branch "$BRANCH" \
+      --arg commit "$COMMIT" \
+      --arg url    "$BUILD_URL" \
+      --arg deploy "$DEPLOYMENT_URL" \
+      '{
+        type: "message",
+        attachments: [
+          {
+            contentType: "application/vnd.microsoft.card.adaptive",
+            content: {
+              type: "AdaptiveCard",
+              version: "1.5",
+              body: [
+                { type: "TextBlock", text: "✅ Deployment Successful For RHKProperties-Site Dev", weight: "Bolder", size: "Large" },
+                { type: "FactSet", facts: [
+                  { title: "Repository", value: $repo },
+                  { title: "Branch",     value: $branch },
+                  { title: "Commit",     value: $commit }
+                ]}
+              ],
+              actions: (
+                [
+                  { type: "Action.OpenUrl", title: "View Build", url: $url }
+                ] +
+                (if ($deploy|length) > 0 then
+                   [ { type: "Action.OpenUrl", title: "Visit Site", url: $deploy } ]
+                 else
+                   []
+                 end)
+              ),
+              msteams: { width: "Full" }
+            }
+          }
+        ]
+      }' > payload.json
+
+    curl -sS -X POST -H "Content-Type: application/json" --data @payload.json "${WEBHOOK_URL}"
+  displayName: 'Notify (Teams) — Success'
+  condition: succeeded()
+
+- script: |
+    set -e
+
+    WEBHOOK_URL='$(TEAMS_WEBHOOK)'
+
+    ORG_URI="$(System.TeamFoundationCollectionUri)"   
+    RUN_ID="$(Build.BuildId)"
+    JOB_GUID="$(System.JobId)"                          
+    PROJ_NAME="$(System.TeamProject)"                  
+    PROJ_ID="$(System.TeamProjectId)"                  
+
+    PROJECT_PATH="${PROJ_NAME// /%20}"
+    PROJECT_PATH="${PROJECT_PATH//(/%28}"
+    PROJECT_PATH="${PROJECT_PATH//)/%29}"
+
+    BUILD_URL="${ORG_URI%/}/${PROJECT_PATH}/_build/results?buildId=${RUN_ID}&view=logs&j=${JOB_GUID}&projectId=${PROJ_ID}"
+
+    echo "Build link -> ${BUILD_URL}"
+
+    REPO="${BUILD_REPOSITORY_NAME}"
+    BRANCH="${BUILD_SOURCEBRANCHNAME}"
+    COMMIT="$(echo "${BUILD_SOURCEVERSION}" | cut -c1-7)"
+
+    jq -n \
+      --arg repo   "$REPO" \
+      --arg branch "$BRANCH" \
+      --arg commit "$COMMIT" \
+      --arg url    "$BUILD_URL" \
+      '{
+        type: "message",
+        attachments: [
+          {
+            contentType: "application/vnd.microsoft.card.adaptive",
+            content: {
+              type: "AdaptiveCard",
+              version: "1.5",
+              body: [
+                { "type": "TextBlock", "text": "❌ Deployment Failed For RHKProperties-Site Dev", "weight": "Bolder", "size": "Large", "color": "Attention" },
+                { "type": "FactSet", "facts": [
+                  { "title": "Repository", "value": $repo },
+                  { "title": "Branch",     "value": $branch },
+                  { "title": "Commit",     "value": $commit },
+                  { "title": "Error Details", "value": "Check the logs." }
+                ]}
+              ],
+              "actions": [
+                { "type": "Action.OpenUrl", "title": "View Build", "url": $url }
+              ],
+              "msteams": { "width": "Full" }
+            }
+          }
+        ]
+      }' > payload.json
+
+    curl -sS -X POST -H "Content-Type: application/json" --data @payload.json "${WEBHOOK_URL}"
+  displayName: 'Notify (Teams) — Failure'
+  condition: failed()

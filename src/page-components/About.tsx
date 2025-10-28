@@ -13,22 +13,22 @@ export function About() {
     {
       icon: TrendingUp,
       title: "Smart Deal Analysis",
-      description: "Instant property valuation using comparable sales data and market trends to help you identify fair deals"
+      description: "Instant property valuation using market trends to identify fair deals quickly"
     },
     {
       icon: Clock,
       title: "Real-Time Tracking",
-      description: "Live dashboard showing your transaction progress from documentation to closing with complete transparency"
+      description: "Live dashboard showing transaction progress from start to closing seamlessly"
     },
     {
       icon: Shield,
       title: "Built-In Compliance",
-      description: "RERA-aligned processes with Trakheesi-verified permits and bilingual contracts for complete legal security"
+      description: "RERA-aligned processes with verified permits and bilingual legal contracts"
     },
     {
       icon: CheckCircle,
       title: "Instant Response",
-      description: "Fast, expert support with guaranteed response time and dedicated assistance throughout your journey"
+      description: "Fast expert support with guaranteed response time throughout your journey"
     }
   ];
 
@@ -36,22 +36,22 @@ export function About() {
     {
       icon: Shield,
       title: "Transparency",
-      description: "Plain language, clear steps, and real-time updates. No jargon, no surprises, just honest communication every step of the way."
+      description: "Plain language, clear steps, and real-time updates with honest communication throughout"
     },
     {
       icon: Heart,
       title: "Service",
-      description: "Fast follow-up, proactive support, and genuine care for your goals. We treat every client relationship as a long-term partnership."
+      description: "Fast follow-up, proactive support, and genuine care for your goals and success"
     },
     {
       icon: Sparkles,
       title: "Quality",
-      description: "Professional media, verified listings, and polished presentation. Every detail reflects our commitment to excellence."
+      description: "Professional media, verified listings, and polished presentation in every detail"
     },
     {
       icon: CheckCircle,
       title: "Accountability",
-      description: "Auditable actions, documented evidence, and role-based access. Quality and responsibility are built into our process, not added later."
+      description: "Auditable actions with documented evidence and complete role-based access control"
     }
   ];
 
@@ -68,22 +68,22 @@ export function About() {
     {
       icon: Building,
       title: "Property Sales",
-      description: "Expert guidance in buying and selling premium properties across Dubai"
+      description: "Expert guidance in buying and selling premium properties across Dubai successfully"
     },
     {
       icon: Clock,
       title: "Property Management",
-      description: "Comprehensive management services for property owners and investors"
+      description: "Comprehensive management services for property owners and real estate investors"
     },
     {
       icon: CheckCircle,
       title: "Investment Consulting",
-      description: "Strategic advice on real estate investments and portfolio management"
+      description: "Strategic advice on real estate investments and complete portfolio management"
     },
     {
       icon: Globe,
       title: "International Services",
-      description: "Supporting international buyers and investors entering the UAE market"
+      description: "Supporting international buyers and investors entering the UAE real estate market"
     }
   ];
 
@@ -173,7 +173,7 @@ export function About() {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="bg-background rounded-lg p-6 will-change-transform"
+                className="bg-background rounded-lg p-6 will-change-transform flex flex-col items-center text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -181,14 +181,14 @@ export function About() {
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
                 <motion.div
-                  className="h-12 w-12 rounded-full bg-accent/20 flex items-center justify-center mb-4"
+                  className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4"
                   whileHover={{ rotate: 360, scale: 1.15 }}
                   transition={{ duration: 0.4 }}
                 >
                   <value.icon className="h-6 w-6 text-accent" />
                 </motion.div>
-                <h3 className="mb-2">{value.title}</h3>
-                <p className="text-sm text-muted-foreground">{value.description}</p>
+                <h3 className="mb-2 text-center min-h-[2rem]">{value.title}</h3>
+                <p className="text-sm text-muted-foreground w-[280px] max-w-full mx-auto text-center line-clamp-3 min-h-[4rem]">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -207,7 +207,7 @@ export function About() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
-              <div className="h-12 w-12 rounded-full bg-accent/20 flex items-center justify-center mb-4">
+              <div className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4">
                 <Target className="h-6 w-6 text-accent" />
               </div>
               <h2 className="mb-4 text-xl md:text-2xl lg:text-3xl">Our Mission</h2>
@@ -225,7 +225,7 @@ export function About() {
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
-              <div className="h-12 w-12 rounded-full bg-accent/20 flex items-center justify-center mb-4">
+              <div className="h-12 w-12 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center mb-4">
                 <TrendingUp className="h-6 w-6 text-accent" />
               </div>
               <h2 className="mb-4 text-xl md:text-2xl lg:text-3xl">Our Vision</h2>
@@ -256,9 +256,9 @@ export function About() {
           </motion.div>
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline line - hidden on mobile, visible on desktop */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-accent/20" />
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-accent" />
             {/* Mobile timeline line - on the left */}
-            <div className="md:hidden absolute left-4 top-0 h-full w-0.5 bg-accent/20" />
+            <div className="md:hidden absolute left-4 top-0 h-full w-0.5 bg-accent" />
             <div className="space-y-8 md:space-y-12">
               {customerPathway.map((item, index) => (
                 <motion.div
@@ -298,7 +298,7 @@ export function About() {
                     </motion.div>
                   </div>
                   <motion.div
-                    className="hidden md:block w-4 h-4 flex-shrink-0 rounded-full bg-accent border-4 border-background z-10"
+                    className="hidden md:block w-4 h-4 flex-shrink-0 rounded-full bg-accent border-4 border-gray-400 dark:border-white z-10"
                     whileHover={{ scale: 1.5 }}
                     transition={{ duration: 0.2 }}
                   />
@@ -325,11 +325,11 @@ export function About() {
               Comprehensive real estate solutions tailored to your needs
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-secondary rounded-lg p-6 text-center will-change-transform"
+                className="bg-secondary rounded-lg p-6 text-center will-change-transform flex flex-col items-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -341,12 +341,12 @@ export function About() {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="h-16 w-16 rounded-full bg-accent/20 flex items-center justify-center">
+                  <div className="h-16 w-16 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center">
                     <service.icon className="h-8 w-8 text-accent" />
                   </div>
                 </motion.div>
-                <h3 className="mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground">{service.description}</p>
+                <h3 className="mb-2 text-center min-h-[2rem]">{service.title}</h3>
+                <p className="text-sm text-muted-foreground w-[260px] max-w-full mx-auto text-center line-clamp-3 min-h-[4rem]">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -372,11 +372,11 @@ export function About() {
               Modern tools and processes designed to make your real estate journey transparent, efficient, and stress-free
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {platformFeatures.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-background rounded-lg p-6 text-center will-change-transform"
+                className="bg-background rounded-lg p-6 text-center will-change-transform flex flex-col items-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -385,15 +385,15 @@ export function About() {
               >
                 <div className="flex justify-center mb-4">
                   <motion.div
-                    className="h-16 w-16 rounded-full bg-accent/20 flex items-center justify-center"
+                    className="h-16 w-16 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center"
                     whileHover={{ rotate: 360, scale: 1.15 }}
                     transition={{ duration: 0.4 }}
                   >
                     <feature.icon className="h-8 w-8 text-accent" />
                   </motion.div>
                 </div>
-                <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <h3 className="mb-2 text-lg font-semibold text-center min-h-[2rem]">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground w-[280px] max-w-full mx-auto text-center line-clamp-3 min-h-[4rem]">{feature.description}</p>
               </motion.div>
             ))}
           </div>

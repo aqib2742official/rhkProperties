@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Building2, Users, TrendingUp, FileCheck } from "lucide-react";
 import officeImage from "@/assets/images/home-about-office.jpg";
 
-export function WhyChooseUs() {
+export default function WhyChooseUs() {
   return (
     <section className="py-12 md:py-16 bg-secondary">
       <div className="container mx-auto px-4 lg:px-8">
@@ -14,7 +14,7 @@ export function WhyChooseUs() {
             <div className="space-y-4">
               <div className="flex gap-3">
                 <div className="flex-shrink-0">
-                  <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center">
                     <Users className="h-5 w-5 text-accent" />
                   </div>
                 </div>
@@ -27,7 +27,7 @@ export function WhyChooseUs() {
               </div>
               <div className="flex gap-3">
                 <div className="flex-shrink-0">
-                  <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center">
                     <Building2 className="h-5 w-5 text-accent" />
                   </div>
                 </div>
@@ -40,7 +40,7 @@ export function WhyChooseUs() {
               </div>
               <div className="flex gap-3">
                 <div className="flex-shrink-0">
-                  <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center">
                     <FileCheck className="h-5 w-5 text-accent" />
                   </div>
                 </div>
@@ -53,7 +53,7 @@ export function WhyChooseUs() {
               </div>
               <div className="flex gap-3">
                 <div className="flex-shrink-0">
-                  <div className="h-10 w-10 rounded-full bg-accent/20 flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-full bg-accent/10 dark:bg-accent flex items-center justify-center">
                     <TrendingUp className="h-5 w-5 text-accent" />
                   </div>
                 </div>

@@ -1,4 +1,10 @@
-import { BlogPost } from '@/page-components/BlogPost';
+import dynamic from 'next/dynamic';
+import { SectionLoader } from '@/components/SectionLoader';
+
+const BlogPost = dynamic(() => import('@/page-components/BlogPost').then(mod => ({ default: mod.BlogPost })), {
+  loading: () => <SectionLoader minHeight="800px" />,
+  ssr: true,
+});
 
 interface BlogPostPageProps {
   params: Promise<{

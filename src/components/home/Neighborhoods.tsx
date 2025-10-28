@@ -6,7 +6,7 @@ import downtownImage from "@/assets/images/home-neighborhood-downtown.jpg";
 import marinaImage from "@/assets/images/home-neighborhood-marina.jpg";
 import palmImage from "@/assets/images/home-neighborhood-palm.jpg";
 
-export function Neighborhoods() {
+export default function Neighborhoods() {
   const neighborhoods = [
     {
       name: "Downtown Dubai",

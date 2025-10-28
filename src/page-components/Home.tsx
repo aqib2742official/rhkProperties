@@ -3,30 +3,33 @@
 import dynamic from 'next/dynamic';
 import { PremiumSlider } from "../components/PremiumSlider";
 import { HeroHighlights } from "../components/home/HeroHighlights";
+import { SectionLoader } from "../components/SectionLoader";
+import { PropertyCTA } from "../components/PropertyCTA";
 
-// Lazy load home page sections below the fold
-const FeaturedProperties = dynamic(() => import("../components/home/FeaturedProperties").then(mod => ({ default: mod.FeaturedProperties })), {
+// Lazy load home page sections below the fold with loading fallbacks
+const FeaturedProperties = dynamic(() => import("../components/home/FeaturedProperties"), {
   ssr: false,
+  loading: () => <SectionLoader minHeight="500px" />,
 });
 
-const WhyChooseUs = dynamic(() => import("../components/home/WhyChooseUs").then(mod => ({ default: mod.WhyChooseUs })), {
+const WhyChooseUs = dynamic(() => import("../components/home/WhyChooseUs"), {
   ssr: false,
+  loading: () => <SectionLoader minHeight="600px" />,
 });
 
-const Neighborhoods = dynamic(() => import("../components/home/Neighborhoods").then(mod => ({ default: mod.Neighborhoods })), {
+const Neighborhoods = dynamic(() => import("../components/home/Neighborhoods"), {
   ssr: false,
+  loading: () => <SectionLoader minHeight="600px" />,
 });
 
-const HowItWorks = dynamic(() => import("../components/home/HowItWorks").then(mod => ({ default: mod.HowItWorks })), {
+const HowItWorks = dynamic(() => import("../components/home/HowItWorks"), {
   ssr: false,
+  loading: () => <SectionLoader minHeight="500px" />,
 });
 
-const TrustCompliance = dynamic(() => import("../components/home/TrustCompliance").then(mod => ({ default: mod.TrustCompliance })), {
+const TrustCompliance = dynamic(() => import("../components/home/TrustCompliance"), {
   ssr: false,
-});
-
-const PropertyCTA = dynamic(() => import("../components/PropertyCTA").then(mod => ({ default: mod.PropertyCTA })), {
-  ssr: false,
+  loading: () => <SectionLoader minHeight="400px" />,
 });
 
 export function Home() {
