@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
       width:200px;
       height:60px;
       margin:0 auto;
-      background:url('${process.env.BASE_URL || 'https://rhkproperties.com'}/logo.svg') no-repeat center center;
+      background:url('${process.env.BASE_URL || 'https://rhkproperties.vercel.app'}/logo.png') no-repeat center center;
       background-size:contain;
       line-height:60px;
       color:#ffffff;
