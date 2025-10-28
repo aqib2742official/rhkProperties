@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 const validateEnvVariables = () => {
     const required = ['EMAIL_USER', 'EMAIL_PASSWORD', 'RECIPIENT_EMAIL'];
     const missing = required.filter(key => !process.env[key]);
-    
+
     if (missing.length > 0) {
         throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
     }
@@ -89,9 +89,24 @@ export async function POST(request: NextRequest) {
                     <!-- Header -->
                     <tr>
                         <td style="background: linear-gradient(135deg, #161950 0%, #1E2370 100%); padding: 40px 30px; text-align: center;">
-                            <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">
-                                RHK Properties
-                            </h1>
+                            <h1 style="margin: 0; text-align:center;">
+  <div
+    style="
+      width:200px;
+      height:60px;
+      margin:0 auto;
+      background:url('${process.env.BASE_URL || 'https://rhkproperties.com'}/logo.svg') no-repeat center center;
+      background-size:contain;
+      line-height:60px;
+      color:#ffffff;
+      font-weight:700;
+      font-size:24px;
+    "
+  >
+    RHK Properties
+  </div>
+</h1>
+
                             <p style="margin: 10px 0 0 0; color: rgba(255, 255, 255, 0.9); font-size: 14px; font-weight: 500;">
                                 New Contact Form Submission
                             </p>
@@ -216,15 +231,15 @@ export async function POST(request: NextRequest) {
                                 <tr>
                                     <td style="font-size: 12px; color: #6B7280;">
                                         <p style="margin: 0 0 4px 0;"><strong>📅 Received:</strong> ${new Date().toLocaleString('en-US', {
-                                            timeZone: 'Asia/Dubai',
-                                            weekday: 'long',
-                                            year: 'numeric',
-                                            month: 'long',
-                                            day: 'numeric',
-                                            hour: '2-digit',
-                                            minute: '2-digit',
-                                            timeZoneName: 'short'
-                                        })}</p>
+                timeZone: 'Asia/Dubai',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            })}</p>
                                         <p style="margin: 4px 0 0 0;"><strong>🌐 Source:</strong> RHK Properties Contact Form</p>
                                     </td>
                                 </tr>
